@@ -1,0 +1,23 @@
+@import "../../../assets/colors.scss";
+
+header {
+  width: 100%;
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  align-items: center;
+  background-color: $primary-color;
+  color: $white-color;
+
+  ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+
+    a {
+      color: $white-color;
+      text-decoration: none;
+    }
+  }
+}
