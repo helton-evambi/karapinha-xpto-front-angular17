@@ -1,0 +1,20 @@
+@import "../../../assets/colors.scss";
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: $destac-color;
+
+  &.primary {
+    padding: 15px;
+  }
+  &.secundary {
+    padding: 18px;
+  }
+
+  &.pink {
+    background-color: $pink-color;
+    font-size: 19px;
+  }
+}
