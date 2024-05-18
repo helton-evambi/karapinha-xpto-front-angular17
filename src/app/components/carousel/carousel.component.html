@@ -1,0 +1,14 @@
+<div class="carousel">
+  <div
+    class="slides"
+    [style.transform]="'translateX(' + currentSlide * -100 + '%)'"
+  >
+    @for (img of images; track $index) {
+    <div class="slide">
+      <img [src]="img" alt="Slide image" />
+    </div>
+    }
+  </div>
+  <button (click)="prevSlide()">&#10094;</button>
+  <button (click)="nextSlide()">&#10095;</button>
+</div>

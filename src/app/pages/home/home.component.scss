@@ -49,14 +49,18 @@ main {
     padding-right: 300px;
     font-size: 30px;
   }
-  .category-section{
+  .category-section {
     padding: 70px 150px;
 
-    div{
+    div {
       display: flex;
       justify-content: space-between;
       gap: 40px;
       margin: 20px 0;
     }
+  }
+
+  .carousel-section {
+    overflow: hidden;
   }
 }
