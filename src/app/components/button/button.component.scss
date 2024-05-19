@@ -12,9 +12,11 @@
   &.secundary {
     padding: 18px;
   }
-
   &.pink {
     background-color: $pink-color;
     font-size: 19px;
+  }
+  &.full {
+    width: 100%;
   }
 }
