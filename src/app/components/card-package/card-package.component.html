@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="img-card">
+    <img [src]="image" alt="Card image" />
+  </div>
+  <div class="title">{{ packegeTitle }}</div>
+  <div class="price-div">
+    <span class="price">KZ{{ price }}</span>
+    por serviço
+  </div>
+  <app-button btn-text="Mais informações" size="full"></app-button>
+  <div>{{ packegeText }}</div>
+  <div>
+    @for (item of packegeItems; track $index) {
+    <div><ng-icon name="ionCheckmark"></ng-icon> {{ item }}</div>
+    }
+  </div>
+</div>
