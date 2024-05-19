@@ -69,4 +69,15 @@ main {
     padding: 200px $pedding-horizontal;
     display: flex;
   }
+
+  .about-section {
+    @extend .hero-section;
+    background-color: $secundary-color;
+    .about-title {
+      font-size: 300;
+    }
+    .about-p {
+      font-weight: 300;
+    }
+  }
 }
