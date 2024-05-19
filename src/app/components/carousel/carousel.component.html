@@ -1,13 +1,19 @@
-<div class="carousel">
+<div [class]="type === 'testimonials' ? 'carousel-testimonials' : 'carousel'">
   <div
     class="slides"
     [style.transform]="'translateX(' + currentSlide * -100 + '%)'"
   >
-    @for (img of images; track $index) {
+    @if (type === 'testimonials') { @for (testimonial of testimonials; track
+    $index) {
+    <div class="slide testimonials">
+      <h2>{{ testimonial.text }}</h2>
+      <p>- {{ testimonial.author }}</p>
+    </div>
+    } } @else { @for (img of images; track $index) {
     <div class="slide">
       <img [src]="img" alt="Slide image" />
     </div>
-    }
+    } }
   </div>
   <button (click)="prevSlide()">&#10094;</button>
   <button (click)="nextSlide()">&#10095;</button>
