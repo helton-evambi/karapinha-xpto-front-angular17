@@ -89,4 +89,32 @@ main {
       margin: 20px 0;
     }
   }
+
+  .location-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px $pedding-horizontal;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 15px;
+    }
+    .img-location {
+      width: 600px;
+      height: 400px;
+      img {
+        width: 100%;
+        border-radius: $radius;
+      }
+    }
+  }
 }
