@@ -59,4 +59,36 @@
       ]"
     ></app-carousel>
   </section>
+  <section class="gallery-section">
+    <app-gallery
+      [images]="[
+        '../../../assets/images/gallery1.jpg',
+        '../../../assets/images/gallery2.jpg',
+        '../../../assets/images/gallery3.jpg',
+        '../../../assets/images/gallery4.jpg',
+        '../../../assets/images/gallery5.jpg',
+        '../../../assets/images/gallery6.jpg'
+      ]"
+    >
+    </app-gallery>
+  </section>
+  <section class="testimonials-section">
+    <app-carousel
+      type="testimonials"
+      [testimonials]="[
+        {
+          text: 'Karapinha XPTO é fantástica! Os serviços do salão de beleza são de primeira linha e a equipe é extremamente qualificada e amigável. Fiquei completamente impressionado com os resultados e a experiência geral. Obrigado pelo ótimo atendimento, Karapinha XPTO!',
+          author: 'Helton'
+        },
+        {
+          text: 'Karapinha XPTO é um salão de beleza excepcional em Luanda! Seus profissionais qualificados e atenção aos detalhes são notáveis. A equipe é simpática e oferece excelente atendimento ao cliente. Recomendo fortemente o Karapinha XPTO para todas as suas necessidades de beleza. Obrigado pela experiência maravilhosa!',
+          author: 'Evambi'
+        },
+        {
+          text: 'Karapinha XPTO é um salão de beleza fantástico! A equipe é qualificada e amigável, oferecendo um serviço de primeira linha. Saí me sentindo mimado e rejuvenescido. Obrigado, Karapinha XPTO, pela experiência maravilhosa!',
+          author: 'Daniel'
+        }
+      ]"
+    ></app-carousel>
+  </section>
 </main>
