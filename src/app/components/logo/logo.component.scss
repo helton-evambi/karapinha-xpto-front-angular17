@@ -1,4 +1,16 @@
 div {
-  font-size: 25px;
-  font-family: "Dancing Script", cursive;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    width: 130px;
+    height: 130px;
+    //border: 0.5px solid #ffffff;
+  }
+  span {
+    font-size: 30px;
+    font-family: "Dancing Script", cursive;
+  }
 }
