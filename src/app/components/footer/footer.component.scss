@@ -1,0 +1,17 @@
+@import "../../../assets/colors.scss";
+@import "../../../variables/styles.variables.scss";
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px $pedding-horizontal;
+  background-color: $primary-color;
+  .quick-links {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    a {
+      text-decoration: none;
+    }
+  }
+}
