@@ -5,6 +5,7 @@ import { CardCategoryComponent } from '../../components/card-category/card-categ
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { GalleryComponent } from '../../components/gallery/gallery.component';
 import { CardPackageComponent } from '../../components/card-package/card-package.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { CardPackageComponent } from '../../components/card-package/card-package
     CarouselComponent,
     GalleryComponent,
     CardPackageComponent,
+    FooterComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
