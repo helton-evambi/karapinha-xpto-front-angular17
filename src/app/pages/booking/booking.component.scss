@@ -1,0 +1,24 @@
+@import "../../../assets/colors.scss";
+@import "../../../variables/styles.variables.scss";
+
+main {
+  padding: 90px $pedding-horizontal;
+  .step-navegation {
+    display: flex;
+    gap: 10px;
+    span {
+      cursor: pointer;
+      color: #9a9a9a;
+      font-weight: 500;
+    }
+    .step-passed {
+      color: #000;
+    }
+  }
+  h1 {
+    color: #000;
+    margin: 20px 0;
+    font-size: 35px;
+    font-weight: 600;
+  }
+}
