@@ -4,5 +4,11 @@
     <span class="step-passed">Serviço > </span><span>Profissional > </span
     ><span>Data > </span><span>Hora > </span><span>Confirmar</span>
   </div>
-  <h1>Selecionar Serviços</h1>
+  <h1>{{ stepTitle }}</h1>
+  <div class="container">
+    <ng-content></ng-content>
+    <div class="summary">
+      <app-booking-summary [step]="stepNumber"></app-booking-summary>
+    </div>
+  </div>
 </main>

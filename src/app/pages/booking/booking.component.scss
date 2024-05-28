@@ -23,9 +23,9 @@ main {
   }
   .container {
     display: flex;
-    .total {
+    justify-content: space-between;
+    .summary {
       color: #000;
-      flex: 1;
     }
   }
 }
