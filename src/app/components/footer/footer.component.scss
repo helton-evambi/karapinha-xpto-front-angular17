@@ -6,11 +6,13 @@ footer {
   justify-content: space-between;
   padding: 100px $pedding-horizontal;
   background-color: $primary-color;
+  color: #ffffff;
   .quick-links {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
     a {
+      color: #ffffff;
       text-decoration: none;
     }
   }
