@@ -1,8 +1,13 @@
-<header></header>
+<header>
+  <ng-icon name="ionArrowBackOutline" size="28" class="icon" />
+  <ng-icon name="ionCloseOutline" size="28" class="icon" />
+</header>
 <main>
   <div class="step-navegation">
-    <span class="step-passed">Serviço > </span><span>Profissional > </span
-    ><span>Data > </span><span>Hora > </span><span>Confirmar</span>
+    <span [class]="stepNumber >= 1 ? 'step-passed' : ''">Serviço > </span
+    ><span [class]="stepNumber >= 2 ? 'step-passed' : ''">Profissional > </span
+    ><span [class]="stepNumber >= 3 ? 'step-passed' : ''">Horarário > </span
+    ><span [class]="stepNumber >= 4 ? 'step-passed' : ''">Confirmar</span>
   </div>
   <h1>{{ stepTitle }}</h1>
   <div class="container">
