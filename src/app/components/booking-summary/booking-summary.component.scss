@@ -1,0 +1,80 @@
+@import "../../../assets/colors.scss";
+@import "../../../variables/styles.variables.scss";
+
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 90px;
+  right: $pedding-horizontal;
+  width: 450px;
+  height: 550px;
+  padding: 20px;
+  border: 0.6px solid #000;
+  border-radius: $radius;
+  overflow-y: auto;
+
+  .header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    .img {
+      width: 70px;
+      height: 70px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .salon-info {
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+  .itens {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+    h3 {
+      font-weight: 500;
+    }
+    p {
+      color: $gray-color;
+    }
+    .price {
+      color: #000;
+    }
+  }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    border-top: 0.6px solid $gray-color;
+    p {
+      font-weight: 600;
+    }
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      border-radius: $radius;
+      cursor: pointer;
+      &:hover {
+        background-color: #474747;
+      }
+    }
+  }
+}
