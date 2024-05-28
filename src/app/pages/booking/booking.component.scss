@@ -1,8 +1,18 @@
 @import "../../../assets/colors.scss";
 @import "../../../variables/styles.variables.scss";
 
+header {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $pedding-horizontal;
+  .icon {
+    cursor: pointer;
+  }
+}
 main {
-  padding: 90px $pedding-horizontal;
+  padding: 0 $pedding-horizontal 90px $pedding-horizontal;
   .step-navegation {
     display: flex;
     gap: 10px;
