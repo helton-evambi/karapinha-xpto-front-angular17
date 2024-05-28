@@ -2,7 +2,7 @@
 @import "../../../variables/styles.variables.scss";
 
 .container {
-  flex: 1;
+  width: 50%;
 
   .category {
     font-size: 20px;
@@ -24,7 +24,7 @@
       border-radius: $radius;
       padding: 20px;
       cursor: pointer;
-      transition: ease-in 0.3s;
+      transition: ease-in 0.2s;
       &:hover {
         background-color: #eaeaea;
       }
