@@ -1,0 +1,15 @@
+@if (visibility) {
+<div class="container">
+  <div class="modal">
+    <div class="modal-header">
+      <ng-icon
+        name="ionCloseOutline"
+        size="28"
+        class="icon"
+        (click)="close()"
+      />
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>
+}

@@ -1,0 +1,35 @@
+@import "../../../assets/colors.scss";
+@import "../../../variables/styles.variables.scss";
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  transition: ease-in 0.2s;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(102, 102, 102, 0.4);
+  z-index: 99;
+}
+
+.modal {
+  width: 800px;
+  height: 580px;
+  background-color: #ffffff;
+  border-radius: $radius;
+  z-index: 100;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: end;
+  ng-icon {
+    cursor: pointer;
+  }
+}
