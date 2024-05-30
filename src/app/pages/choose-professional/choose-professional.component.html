@@ -6,9 +6,9 @@
           <h3>Gel Pedicure</h3>
           <p>45min</p>
           <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
+          <div class="select" (click)="openModal()">
             <ng-icon name="ionPersonAdd" />
-            <p (click)="openModal()">Selecionar Profissional</p>
+            <p>Selecionar Profissional</p>
             <ng-icon name="ionChevronDown" />
           </div>
         </div>
@@ -98,37 +98,37 @@
         </div>
       </div>
     </div>
-    <app-modal [visibility]="modalVisibility" (closeModal)="closeModal()">
-      <div>
-        <h2>Gel Pedicure</h2>
-        <div class="professonais">
-          <div class="professional-card">
-            <div class="img">
-              <img src="../../../assets/images/person1.jpg" alt="" />
-            </div>
-            <p>Helton Evambi</p>
-          </div>
-          <div class="professional-card">
-            <div class="img">
-              <img src="../../../assets/images/person2.jpg" alt="" />
-            </div>
-            <p>Gida Correia</p>
-          </div>
-          <div class="professional-card">
-            <div class="img">
-              <img src="../../../assets/images/person3.jpg" alt="" />
-            </div>
-            <p>Alice José</p>
-          </div>
-          <div class="professional-card">
-            <div class="img">
-              <img src="../../../assets/images/person4.jpg" alt="" />
-            </div>
-            <p>Elma Ventura</p>
-          </div>
-        </div>
-      </div>
-      <div></div>
-    </app-modal>
   </div>
 </app-booking>
+<app-modal
+  [visibility]="modalVisibility"
+  (closeModal)="closeModal()"
+  title="Corte de Cabelo"
+>
+  <div class="professonais">
+    <div class="professional-card">
+      <div class="img">
+        <img src="../../../assets/images/person1.jpg" alt="" />
+      </div>
+      <p>Helton Evambi</p>
+    </div>
+    <div class="professional-card">
+      <div class="img">
+        <img src="../../../assets/images/person2.jpg" alt="" />
+      </div>
+      <p>Gida Correia</p>
+    </div>
+    <div class="professional-card">
+      <div class="img">
+        <img src="../../../assets/images/person3.jpg" alt="" />
+      </div>
+      <p>Alice José</p>
+    </div>
+    <div class="professional-card">
+      <div class="img">
+        <img src="../../../assets/images/person4.jpg" alt="" />
+      </div>
+      <p>Elma Ventura</p>
+    </div>
+  </div>
+</app-modal>

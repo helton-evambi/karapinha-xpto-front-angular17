@@ -15,6 +15,7 @@ import { ionCloseOutline } from '@ng-icons/ionicons';
   styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
+  @Input() title: string = '';
   @Input() visibility: boolean = false;
   @Output() closeModal = new EventEmitter<void>();
   close() {
