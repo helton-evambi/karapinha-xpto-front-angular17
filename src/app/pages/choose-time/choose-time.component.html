@@ -1,0 +1,37 @@
+<app-booking stepTitle="Selecionar Horário" [stepNumber]="3">
+  <div class="container">
+    <div class="content">
+      <div class="card">
+        <div>
+          <h3>Gel Pedicure <span>com Helton Evambi</span></h3>
+          <p>45min</p>
+          <p>Um gel muito bom para a sua saúde</p>
+          <div class="select-container">
+            <div class="select">
+              <label for="date">Selecionar a Data</label>
+              <input type="date" name="ola" id="date" />
+            </div>
+            <div class="select-time" (click)="openModal()">
+              <ng-icon name="ionTimeOutline" />
+              <p>Selecionar a Hora</p>
+              <ng-icon name="ionChevronDown" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-booking>
+<app-modal
+  [visibility]="modalVisibility"
+  (closeModal)="closeModal()"
+  title="Escolha a hora disponível"
+>
+  <div class="container">
+    <div class="time-card">10h00</div>
+    <div class="time-card">12h00</div>
+    <div class="time-card">14h00</div>
+    <div class="time-card">14h30</div>
+    <div class="time-card">16h00</div>
+  </div>
+</app-modal>

@@ -4,6 +4,7 @@ import { ServicosComponent } from './pages/servicos/servicos.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { ChooseServiceComponent } from './pages/choose-service/choose-service.component';
 import { ChooseProfessionalComponent } from './pages/choose-professional/choose-professional.component';
+import { ChooseTimeComponent } from './pages/choose-time/choose-time.component';
 
 export const routes: Routes = [
   {
@@ -21,5 +22,9 @@ export const routes: Routes = [
   {
     path: 'booking/choose-profissional',
     component: ChooseProfessionalComponent,
+  },
+  {
+    path: 'booking/choose-time',
+    component: ChooseTimeComponent,
   },
 ];
