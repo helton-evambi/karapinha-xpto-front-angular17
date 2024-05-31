@@ -1,6 +1,11 @@
 <header>
-  <ng-icon name="ionArrowBackOutline" size="28" class="icon" />
-  <ng-icon name="ionCloseOutline" size="28" class="icon" />
+  <ng-icon
+    name="ionArrowBackOutline"
+    size="28"
+    class="icon"
+    (click)="goBack()"
+  />
+  <ng-icon name="ionCloseOutline" size="28" class="icon" routerLink="" />
 </header>
 <main>
   <div class="step-navegation">

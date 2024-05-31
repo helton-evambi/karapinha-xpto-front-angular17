@@ -6,6 +6,7 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 import { GalleryComponent } from '../../components/gallery/gallery.component';
 import { CardPackageComponent } from '../../components/card-package/card-package.component';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
     GalleryComponent,
     CardPackageComponent,
     FooterComponent,
+    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

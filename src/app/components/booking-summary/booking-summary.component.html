@@ -43,6 +43,8 @@
     </div>
   </div>
   <div class="button">
-    <button>Continuar</button>
+    <button [disabled]="step === 4 ? true : false" (click)="continue()">
+      Continuar
+    </button>
   </div>
 </div>

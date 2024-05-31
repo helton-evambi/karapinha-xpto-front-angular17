@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ServicosComponent } from './pages/servicos/servicos.component';
-import { BookingComponent } from './pages/booking/booking.component';
 import { ChooseServiceComponent } from './pages/choose-service/choose-service.component';
 import { ChooseProfessionalComponent } from './pages/choose-professional/choose-professional.component';
 import { ChooseTimeComponent } from './pages/choose-time/choose-time.component';
+import { ConfirmBookingComponent } from './pages/confirm-booking/confirm-booking.component';
 
 export const routes: Routes = [
   {
@@ -26,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'booking/choose-time',
     component: ChooseTimeComponent,
+  },
+  {
+    path: 'booking/confirm',
+    component: ConfirmBookingComponent,
   },
 ];
