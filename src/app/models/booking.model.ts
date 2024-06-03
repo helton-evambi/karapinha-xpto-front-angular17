@@ -1,9 +1,9 @@
-import { BookingService } from './booking-service.model';
+import { BookingServices } from './booking-service.model';
 import { Time } from './time.model';
 
 export interface Booking {
-  BookingId: string;
-  Services: BookingService[];
-  Total: Time;
+  BookingId?: number;
+  Services: BookingServices[];
+  Total: number;
   Status: string;
 }
