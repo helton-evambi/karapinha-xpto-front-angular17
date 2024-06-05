@@ -38,6 +38,15 @@
     display: flex;
     margin: 20px 0;
     justify-content: space-between;
+    .itens-content {
+      display: flex;
+      flex-direction: column;
+
+      div {
+        display: flex;
+        gap: 10px;
+      }
+    }
     h3 {
       font-weight: 500;
     }
