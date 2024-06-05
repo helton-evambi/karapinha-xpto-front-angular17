@@ -9,34 +9,28 @@
         <p>Luanda, Angola</p>
       </div>
     </div>
-    <div class="itens">
-      <div>
-        <h3>Gel Pedicure</h3>
-        <p>45min</p>
+    <div *ngIf="getBooking$ | async as getBooking">
+      @for (service of getBooking.Services; track $index) {
+      <div class="itens">
+        <div class="itens-content">
+          <div>
+            <h3>{{ service.Service.Nome }}</h3>
+            @if (service.Professional) {
+            <span>com {{ service.Professional.Nome }}</span>
+            }
+          </div>
+          <div>
+            <p>~ {{ service.Service.Time }} mim</p>
+            <p>{{ service.Date }}</p>
+          </div>
+        </div>
+        <div>
+          <p class="price">{{ service.Service.Price }}kz</p>
+        </div>
       </div>
-      <div><p class="price">10000kz</p></div>
+      }
     </div>
-    <div class="itens">
-      <div>
-        <h3>Gel Pedicure</h3>
-        <p>45min</p>
-      </div>
-      <div><p class="price">10000kz</p></div>
-    </div>
-    <div class="itens">
-      <div>
-        <h3>Gel Pedicure</h3>
-        <p>45min</p>
-      </div>
-      <div><p class="price">10000kz</p></div>
-    </div>
-    <div class="itens">
-      <div>
-        <h3>Gel Pedicure</h3>
-        <p>45min</p>
-      </div>
-      <div><p class="price">10000kz</p></div>
-    </div>
+
     <div class="total">
       <p>Total</p>
       <p>20000kz</p>
