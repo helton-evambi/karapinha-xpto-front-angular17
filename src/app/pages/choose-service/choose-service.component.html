@@ -1,64 +1,18 @@
 <app-booking stepTitle="Selecionar Serviços" [stepNumber]="1">
   <div class="container">
-    <h2 class="category">Unhas</h2>
+    <h2 class="category"></h2>
     <div class="content">
-      <div class="card">
+      @for (service of services; track $index) {
+      <div class="card" (click)="onClick(service)">
         <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
+          <h3>{{ service.Nome }}</h3>
+          <p>{{ service.Time }} mim</p>
+          <p>{{ service.Description }}</p>
+          <p class="price">{{ service.Price }}Kz</p>
         </div>
         <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
       </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
-        </div>
-        <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
-        </div>
-        <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
-      </div>
-    </div>
-    <h2 class="category">Cabelo</h2>
-    <div class="content">
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
-        </div>
-        <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
-        </div>
-        <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <p class="price">10000kz</p>
-        </div>
-        <ng-icon name="ionAddCircle" color="#9a9a9a" size="30" />
-      </div>
+      }
     </div>
   </div>
 </app-booking>
