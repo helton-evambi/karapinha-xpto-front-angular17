@@ -1,102 +1,29 @@
 <app-booking stepTitle="Selecionar Profissional" [stepNumber]="2">
   <div class="container">
-    <div class="content">
+    <div class="content" *ngIf="getBooking$ | async as getBooking">
+      @for (service of getBooking.Services; track service.Service.ServiceId) {
       <div class="card">
         <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select" (click)="openModal()">
+          <h3>
+            {{ service.Service.Nome }}
+            @if (service.Professional) {
+            <span>com {{ service.Professional.Nome }}</span>
+            }
+          </h3>
+          <p>{{ service.Service.Time }} min</p>
+          <p>{{ service.Service.Description }}</p>
+          <div class="select" (click)="openModal(service.Service.ServiceId)">
             <ng-icon name="ionPersonAdd" />
+            @if (service.Professional) {
+            <p>{{ service.Professional.Nome }}</p>
+            } @else {
             <p>Selecionar Profissional</p>
+            }
             <ng-icon name="ionChevronDown" />
           </div>
         </div>
       </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div>
-          <h3>Gel Pedicure</h3>
-          <p>45min</p>
-          <p>Um gel muito bom para a sua saúde</p>
-          <div class="select">
-            <ng-icon name="ionPersonAdd" />
-            <p>Selecionar Profissional</p>
-            <ng-icon name="ionChevronDown" />
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </app-booking>
@@ -106,29 +33,13 @@
   title="Corte de Cabelo"
 >
   <div class="professonais">
-    <div class="professional-card">
+    @for (professional of professional; track professional.ProfissionalId) {
+    <div class="professional-card" (click)="addProfessional(professional)">
       <div class="img">
-        <img src="../../../assets/images/person1.jpg" alt="" />
+        <img [src]="professional.Photo" alt="" />
       </div>
-      <p>Helton Evambi</p>
+      <p>{{ professional.Nome }}</p>
     </div>
-    <div class="professional-card">
-      <div class="img">
-        <img src="../../../assets/images/person2.jpg" alt="" />
-      </div>
-      <p>Gida Correia</p>
-    </div>
-    <div class="professional-card">
-      <div class="img">
-        <img src="../../../assets/images/person3.jpg" alt="" />
-      </div>
-      <p>Alice José</p>
-    </div>
-    <div class="professional-card">
-      <div class="img">
-        <img src="../../../assets/images/person4.jpg" alt="" />
-      </div>
-      <p>Elma Ventura</p>
-    </div>
+    }
   </div>
 </app-modal>
