@@ -1,9 +1,12 @@
 <app-booking stepTitle="Confirma a sua marcação" [stepNumber]="4">
   <div class="container">
     <div class="content">
-      <div class="card">
+      <div class="card" *ngIf="getBooking$ | async as getBooking">
         <div>
-          <h3>Foram selecianados 4 Serviços para a sua marcação</h3>
+          <h3>
+            Foram selecianados {{ getBooking.Services.length }} Serviços para a
+            sua marcação
+          </h3>
           <div class="select-container">
             <div class="select">
               <button class="btn-confirm">Confirmar</button>
