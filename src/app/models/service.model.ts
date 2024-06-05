@@ -3,8 +3,8 @@ export interface Service {
   Nome: string;
   Description: string;
   Imagem: string;
-  Price: string;
-  Time: string;
+  Price: number;
+  Time: number;
   Status: string;
   CategororyId: number;
 }
