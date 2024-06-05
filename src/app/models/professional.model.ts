@@ -1,3 +1,5 @@
+import { Time } from './time.model';
+
 export interface Professional {
   ProfissionalId: number;
   Nome: string;
@@ -5,4 +7,5 @@ export interface Professional {
   Photo: string;
   IdCard: string;
   PhomeNumber: number;
+  Time: Time[];
 }
