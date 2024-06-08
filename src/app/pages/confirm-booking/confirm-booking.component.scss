@@ -32,14 +32,12 @@
         gap: 10px;
         .select {
           width: 100%;
-          padding: 5px;
           display: flex;
           justify-content: space-around;
           gap: 10px;
           align-items: center;
           margin-top: 10px;
           font-weight: 500;
-          border: 0.6px solid #000;
           border-radius: $radius;
           transition: ease-in-out 0.3s;
           p {
@@ -48,21 +46,21 @@
           button {
             width: 100%;
             padding: 10px;
-            color: #fff;
+            background-color: $white-color;
             border-radius: $radius;
             border: none;
             cursor: pointer;
             transition: ease-in-out 0.2s;
             &.btn-confirm {
-              background-color: #8ad28a;
+              border: 1.5px solid $green-color;
               &:hover {
-                background-color: #6edd6e;
+                background-color: $green-color;
               }
             }
             &.btn-cancel {
-              background-color: #bd4242;
+              border: 1.5px solid $red-color;
               &:hover {
-                background-color: #c73030;
+                background-color: $red-color;
               }
             }
           }
