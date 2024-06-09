@@ -1,0 +1,12 @@
+<div class="container" [class]="page === 'manage' ? 'manage' : ''">
+  <div class="titlte">
+    <span>{{ titlte }}</span>
+    <ng-content select="[titleIcon]"></ng-content>
+  </div>
+  @if(page === "dashboard") {
+  <div class="value">
+    <span>{{ value }}</span>
+    <ng-content select="[valueIcon]"></ng-content>
+  </div>
+  }
+</div>

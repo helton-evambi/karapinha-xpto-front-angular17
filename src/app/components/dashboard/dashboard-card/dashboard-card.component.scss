@@ -1,0 +1,42 @@
+@import "../../../../assets/colors.scss";
+@import "../../../../variables/styles.variables.scss";
+
+.container {
+  width: 350px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-radius: $radius;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  .titlte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .value {
+    @extend .titlte;
+    justify-content: center;
+    gap: 30px;
+    span {
+      font-size: 40px;
+    }
+  }
+}
+.manage {
+  justify-content: center;
+  cursor: pointer;
+  .titlte {
+    span {
+      font-weight: 500;
+    }
+  }
+}
