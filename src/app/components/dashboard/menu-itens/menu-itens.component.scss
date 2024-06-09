@@ -1,0 +1,14 @@
+@import "../../../../assets/colors.scss";
+
+div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $dark-gray;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  span {
+    font-weight: 500;
+  }
+}
