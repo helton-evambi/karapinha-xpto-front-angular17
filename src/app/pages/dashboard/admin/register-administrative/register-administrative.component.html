@@ -1,0 +1,109 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Cadastrar Administrativo"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/admin/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Adminstrativos"
+      routerLink="/admin/manage-administrative"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Utilizadores"
+      routerLink="/admin/manage-user"
+    >
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <app-primary-input
+          inputName="firstName"
+          formControlName="FirstName"
+          type="text"
+          label="Primeiro Nome"
+          placeholder="Helton"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="lastName"
+          formControlName="LastName"
+          type="text"
+          label="Último Nome"
+          placeholder="Evambi"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="email"
+          formControlName="Email"
+          type="email"
+          label="Email"
+          placeholder="heltonevambi@gmail.com"
+        >
+          <ng-icon name="matAlternateEmail"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="phone"
+          formControlName="PhoneNumber"
+          type="number"
+          label="Telefone"
+          placeholder="929419140"
+        >
+          <ng-icon name="matPhone"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="userName"
+          formControlName="UserName"
+          type="text"
+          label="Username"
+          placeholder="helton_evambi"
+        >
+          <ng-icon name="ionPersonCircleSharp"></ng-icon>
+        </app-primary-input>
+        <app-primary-input inputName="Photo" type="file" label="Foto">
+          <ng-icon name="matPhoto"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="password"
+          formControlName="Password"
+          type="password"
+          label="Password"
+          placeholder="******"
+        >
+          <ng-icon name="matKey"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="confirmPassword"
+          formControlName="ConfirmPassword"
+          type="password"
+          label="Confirmar Password"
+          placeholder="******"
+        >
+          <ng-icon name="matKey"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div class="btn">
+        <app-button
+          btn-text="Cadastrar"
+          variant="login"
+          type="submit"
+          [disabled]="!registerForm.valid"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</app-dashboard-container>
