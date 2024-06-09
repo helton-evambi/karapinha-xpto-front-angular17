@@ -1,0 +1,33 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Gerir Administrativos"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/admin/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Adminstrativos"
+      routerLink="/admin/manage-administrative"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Utilizadores"
+      routerLink="/admin/manage-user"
+    >
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="card">
+      <app-dashboard-card titlte="Cadastrar Administativo" page="manage">
+        <ng-icon name="matPersonAddAlt1" size="50" titleIcon></ng-icon>
+      </app-dashboard-card>
+      <app-dashboard-card titlte="Listar Administativos" page="manage">
+        <ng-icon name="matPersonSearch" size="50" titleIcon></ng-icon>
+      </app-dashboard-card>
+    </div>
+  </div>
+</app-dashboard-container>
