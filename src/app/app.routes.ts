@@ -5,6 +5,8 @@ import { ChooseServiceComponent } from './pages/choose-service/choose-service.co
 import { ChooseProfessionalComponent } from './pages/choose-professional/choose-professional.component';
 import { ChooseTimeComponent } from './pages/choose-time/choose-time.component';
 import { ConfirmBookingComponent } from './pages/confirm-booking/confirm-booking.component';
+import { AdminDashboardComponent } from './pages/dashboard/admin/admin-dashboard/admin-dashboard.component';
+import { ManageAdministrativeComponent } from './pages/dashboard/admin/manage-administrative/manage-administrative.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +32,13 @@ export const routes: Routes = [
   {
     path: 'booking/confirm',
     component: ConfirmBookingComponent,
+  },
+  {
+    path: 'admin/dashboard',
+    component: AdminDashboardComponent,
+  },
+  {
+    path: 'admin/manage-administrative',
+    component: ManageAdministrativeComponent,
   },
 ];
