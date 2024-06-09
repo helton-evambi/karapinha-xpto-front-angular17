@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card">
+    @switch (action) { @case ("delete") {
+    <div class="icon">
+      <ng-icon name="matDeleteOutline" size="40" color="#FF0000"></ng-icon>
+    </div>
+    <span>Eliminar {{ entity }}</span>
+    } @case ("blocking") {
+    <div class="icon">
+      <ng-icon name="matLockOutline" size="40" color="#d6c331"></ng-icon>
+    </div>
+
+    <span>Bloquear {{ entity }}</span>
+    } @case ("confirm") {
+    <div class="icon">
+      <ng-icon name="matVerifiedOutline" size="40" color="#31d668"></ng-icon>
+    </div>
+    <span>Activar {{ entity }}</span>
+    } }
+  </div>
+</div>

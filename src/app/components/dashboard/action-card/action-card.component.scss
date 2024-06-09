@@ -1,0 +1,28 @@
+@import "../../../../assets/colors.scss";
+.container {
+  display: inline-block;
+  margin-right: 13px;
+  .card {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 0.6px solid $gray-color;
+    border-radius: 5px;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: $ligth-gray;
+    }
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    span {
+      font-weight: 500;
+    }
+  }
+}
