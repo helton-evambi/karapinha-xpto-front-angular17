@@ -22,10 +22,18 @@
   </div>
   <div main-content>
     <div class="card">
-      <app-dashboard-card titlte="Cadastrar Administativo" page="manage">
+      <app-dashboard-card
+        titlte="Cadastrar Administativo"
+        page="manage"
+        routerLink="/admin/administrative/register"
+      >
         <ng-icon name="matPersonAddAlt1" size="50" titleIcon></ng-icon>
       </app-dashboard-card>
-      <app-dashboard-card titlte="Listar Administativos" page="manage">
+      <app-dashboard-card
+        titlte="Listar Administativos"
+        page="manage"
+        routerLink="/admin/administrative/list"
+      >
         <ng-icon name="matPersonSearch" size="50" titleIcon></ng-icon>
       </app-dashboard-card>
     </div>
