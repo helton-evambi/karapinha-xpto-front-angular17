@@ -1,0 +1,77 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Lista de Administrativos"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/admin/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Adminstrativos"
+      routerLink="/admin/manage-administrative"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Utilizadores"
+      routerLink="/admin/manage-user"
+    >
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="table">
+      <app-table>
+        <th th>Nome</th>
+        <th th>Email</th>
+        <th th>Telefone</th>
+        <th th>Bilhete</th>
+        <th th>Estado</th>
+        <th th></th>
+
+        <tr tr>
+          <td>
+            <div class="user-info">
+              <div class="user-image">
+                <img
+                  src="../../../../../assets/images/salon4.jpg"
+                  alt="User Image"
+                />
+              </div>
+
+              <span>Maria Antonio</span>
+            </div>
+          </td>
+          <td>heltonevambi&#64;gmail.com</td>
+          <td>929419140</td>
+          <td>00554963LA040</td>
+          <td><span class="status blocked">Bloqueado</span></td>
+          <td>
+            <span href="#" class="action-link" (click)="openModal(4)"
+              >Ação</span
+            >
+          </td>
+        </tr>
+      </app-table>
+    </div>
+
+    <!-- MODAL -->
+
+    <app-modal
+      [visibility]="modalVisibility"
+      (closeModal)="closeModal()"
+      title="Escolha a ação"
+    >
+      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card
+        action="blocking"
+        entity="Administativo"
+      ></app-action-card>
+      <app-action-card
+        action="confirm"
+        entity="Administativo"
+      ></app-action-card>
+    </app-modal>
+  </div>
+</app-dashboard-container>
