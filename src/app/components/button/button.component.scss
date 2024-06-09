@@ -6,6 +6,12 @@
   cursor: pointer;
   color: $destac-color;
 
+  &.login {
+    background-color: $primary-color;
+    color: $white-color;
+    padding: 10px 40px;
+  }
+
   &.primary {
     padding: 15px;
   }
