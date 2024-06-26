@@ -1,10 +1,12 @@
+import { Category } from './category.model';
+
 export interface Service {
   ServiceId: number;
   Nome: string;
   Description: string;
-  Imagem: string;
+  Image: string;
   Price: number;
-  Time: number;
+  EstimatedTime: number;
   Status: string;
-  CategororyId: number;
+  Category: Category;
 }

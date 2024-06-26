@@ -1,11 +1,14 @@
+import { Category } from './category.model';
 import { Time } from './time.model';
 
 export interface Professional {
   ProfissionalId: number;
-  Nome: string;
-  Email: string;
-  Photo: string;
+  FirstName: string;
+  LastName: string;
+  EmailAddress: string;
+  PhotoUrl: string;
   IdCard: string;
   PhomeNumber: number;
-  Time: Time[];
+  Category: Category;
+  Times: Time[];
 }

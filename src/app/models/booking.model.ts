@@ -4,6 +4,6 @@ import { Time } from './time.model';
 export interface Booking {
   BookingId?: number;
   Services: BookingServices[];
-  Total: number;
+  Price: number;
   Status: string;
 }
