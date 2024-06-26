@@ -7,15 +7,21 @@
           <h3>
             {{ service.Service.Nome }}
             @if (service.Professional) {
-            <span>com {{ service.Professional.Nome }}</span>
+            <span
+              >com {{ service.Professional.FirstName }}
+              {{ service.Professional.LastName }}</span
+            >
             }
           </h3>
-          <p>{{ service.Service.Time }} min</p>
+          <p>{{ service.Service.EstimatedTime }} min</p>
           <p>{{ service.Service.Description }}</p>
           <div class="select" (click)="openModal(service.Service.ServiceId)">
             <ng-icon name="ionPersonAdd" />
             @if (service.Professional) {
-            <p>{{ service.Professional.Nome }}</p>
+            <p>
+              {{ service.Professional.FirstName }}
+              {{ service.Professional.LastName }}
+            </p>
             } @else {
             <p>Selecionar Profissional</p>
             }
@@ -36,9 +42,9 @@
     @for (professional of professional; track professional.ProfissionalId) {
     <div class="professional-card" (click)="addProfessional(professional)">
       <div class="img">
-        <img [src]="professional.Photo" alt="" />
+        <img [src]="professional.PhotoUrl" alt="" />
       </div>
-      <p>{{ professional.Nome }}</p>
+      <p>{{ professional.FirstName }} {{ professional.LastName }}</p>
     </div>
     }
   </div>

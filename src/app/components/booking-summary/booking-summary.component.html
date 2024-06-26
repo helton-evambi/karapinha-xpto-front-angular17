@@ -16,11 +16,14 @@
           <div>
             <h3>{{ service.Service.Nome }}</h3>
             @if (service.Professional) {
-            <span>com {{ service.Professional.Nome }}</span>
+            <span
+              >com {{ service.Professional.FirstName }}
+              {{ service.Professional.LastName }}</span
+            >
             }
           </div>
           <div>
-            <p>~ {{ service.Service.Time }} mim</p>
+            <p>~ {{ service.Service.EstimatedTime }} mim</p>
             <p>{{ service.Date }}</p>
           </div>
         </div>

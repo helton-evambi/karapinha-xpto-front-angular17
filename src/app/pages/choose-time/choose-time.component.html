@@ -7,10 +7,13 @@
           <h3>
             {{ service.Service.Nome }}
             @if (service.Professional) {
-            <span>com {{ service.Professional.Nome }}</span>
+            <span
+              >com {{ service.Professional.FirstName }}
+              {{ service.Professional.LastName }}</span
+            >
             }
           </h3>
-          <p>{{ service.Service.Time }} min</p>
+          <p>{{ service.Service.EstimatedTime }} min</p>
           <p>{{ service.Service.Description }}</p>
           <div class="select-container">
             <div class="select">
@@ -29,7 +32,11 @@
               (click)="openModal(service.Service.ServiceId)"
             >
               <ng-icon name="ionTimeOutline" />
+              @if (service.Time) {
+              {{ service.Time.Hour }}h{{ service.Time.Minute }}
+              } @else {
               <p>Selecionar a Hora</p>
+              }
               <ng-icon name="ionChevronDown" />
             </div>
           </div>
@@ -47,8 +54,8 @@
   <div class="container" *ngIf="getBooking$ | async as getBooking">
     @for (service of getBooking.Services; track service.Service.ServiceId) { @if
     (service.Service.ServiceId == serviceId) { @for (time of
-    service.Professional?.Time; track time.TimeId) {
-    <div class="time-card" (click)="addTime(time.TimeId)">
+    service.Professional?.Times; track time.TimeId) {
+    <div class="time-card" (click)="addTime(time)">
       {{ time.Hour }}h{{ time.Minute }}
     </div>
     } } }
