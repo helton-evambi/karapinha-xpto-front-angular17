@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Booking } from '../../models/booking.model';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import { Time } from '../../models/time.model';
 
 @Component({
   selector: 'app-choose-time',
@@ -51,8 +52,8 @@ export class ChooseTimeComponent implements OnInit {
   addDate(serviceId: number, date: string) {
     this.bookingService.setDate(serviceId, date);
   }
-  addTime(timeId: number) {
-    this.bookingService.setTime(this.serviceId, timeId);
+  addTime(time: Time) {
+    this.bookingService.setTime(this.serviceId, time);
     this.closeModal();
   }
 }

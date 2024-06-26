@@ -32,12 +32,20 @@ export class ChooseProfessionalComponent implements OnInit {
   professional: Professional[] = [
     {
       ProfissionalId: 1,
-      Email: 'helton@gmail.com',
-      Nome: 'Helton Evambi',
+      EmailAddress: 'helton@gmail.com',
+      FirstName: 'Helton',
+      LastName: 'Evambi',
       IdCard: 'vfdvdfbhdf',
       PhomeNumber: 929419140,
-      Photo: '../../../assets/images/person1.jpg',
-      Time: [
+      PhotoUrl: '../../../assets/images/person1.jpg',
+      Category: {
+        CategoryId: 1,
+        Nome: 'Maquiagem',
+        Description: 'kjsk',
+        Imagem: 'fsdf',
+        Status: 'active',
+      },
+      Times: [
         {
           TimeId: 1,
           Hour: 12,
@@ -46,66 +54,47 @@ export class ChooseProfessionalComponent implements OnInit {
       ],
     },
     {
-      ProfissionalId: 2,
-      Email: 'helton@gmail.com',
-      Nome: 'Joao Miguel',
+      ProfissionalId: 1,
+      EmailAddress: 'helton@gmail.com',
+      FirstName: 'Helton',
+      LastName: 'Evambi',
       IdCard: 'vfdvdfbhdf',
       PhomeNumber: 929419140,
-      Photo: '../../../assets/images/person2.jpg',
-      Time: [
+      PhotoUrl: '../../../assets/images/person1.jpg',
+      Category: {
+        CategoryId: 1,
+        Nome: 'Maquiagem',
+        Description: 'kjsk',
+        Imagem: 'fsdf',
+        Status: 'active',
+      },
+      Times: [
         {
           TimeId: 1,
-          Hour: 14,
-          Minute: 30,
-        },
-        {
-          TimeId: 2,
-          Hour: 15,
-          Minute: 30,
-        },
-      ],
-    },
-    {
-      ProfissionalId: 3,
-      Email: 'helton@gmail.com',
-      Nome: 'Antonio da Silva',
-      IdCard: 'vfdvdfbhdf',
-      PhomeNumber: 929419140,
-      Photo: '../../../assets/images/person3.jpg',
-      Time: [
-        {
-          TimeId: 1,
-          Hour: 9,
+          Hour: 12,
           Minute: 30,
         },
       ],
     },
     {
-      ProfissionalId: 4,
-      Email: 'helton@gmail.com',
-      Nome: 'Elma Ventura',
+      ProfissionalId: 1,
+      EmailAddress: 'helton@gmail.com',
+      FirstName: 'Helton',
+      LastName: 'Evambi',
       IdCard: 'vfdvdfbhdf',
       PhomeNumber: 929419140,
-      Photo: '../../../assets/images/person4.jpg',
-      Time: [
+      PhotoUrl: '../../../assets/images/person1.jpg',
+      Category: {
+        CategoryId: 1,
+        Nome: 'Maquiagem',
+        Description: 'kjsk',
+        Imagem: 'fsdf',
+        Status: 'active',
+      },
+      Times: [
         {
           TimeId: 1,
-          Hour: 13,
-          Minute: 30,
-        },
-      ],
-    },
-    {
-      ProfissionalId: 5,
-      Email: 'helton@gmail.com',
-      Nome: 'Gilda Correia',
-      IdCard: 'vfdvdfbhdf',
-      PhomeNumber: 929419140,
-      Photo: '../../../assets/images/person2.jpg',
-      Time: [
-        {
-          TimeId: 1,
-          Hour: 10,
+          Hour: 12,
           Minute: 30,
         },
       ],
