@@ -1,0 +1,52 @@
+@import "../../../../assets/colors.scss";
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  .form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      margin: 0 auto;
+      img {
+        height: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      a {
+        cursor: pointer;
+        color: $pink-color;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .aside-image {
+    opacity: 0.4;
+    flex: 1;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

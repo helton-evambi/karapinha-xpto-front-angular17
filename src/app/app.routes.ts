@@ -9,11 +9,16 @@ import { AdminDashboardComponent } from './pages/dashboard/admin/admin-dashboard
 import { ManageAdministrativeComponent } from './pages/dashboard/admin/manage-administrative/manage-administrative.component';
 import { RegisterAdministrativeComponent } from './pages/dashboard/admin/register-administrative/register-administrative.component';
 import { ListAdministativeComponent } from './pages/dashboard/admin/list-administative/list-administative.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'servicos',

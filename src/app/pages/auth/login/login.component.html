@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="form">
+    <form>
+      <!-- [formGroup]="registerForm" (ngSubmit)="onSubmit()" -->
+      <div class="logo">
+        <img src="../../../../assets/images/logo-light.png" />
+      </div>
+      <div>
+        <app-primary-input
+          inputName="email"
+          formControlName="Email"
+          type="email"
+          label="Email"
+          placeholder="heltonevambi@gmail.com"
+        >
+          <ng-icon name="matAlternateEmail"></ng-icon>
+        </app-primary-input>
+      </div>
+
+      <div>
+        <app-primary-input
+          inputName="password"
+          formControlName="Password"
+          type="password"
+          label="Password"
+          placeholder="******"
+        >
+          <ng-icon name="matKey"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div class="btn">
+        <a>Ainda não tem uma conta?</a>
+        <app-button btn-text="Login" variant="login" type="submit"></app-button>
+        <!-- [disabled]="!registerForm.valid" -->
+      </div>
+    </form>
+  </div>
+
+  <div class="aside-image">
+    <img src="../../../../assets/images/KARAPINHA.png" />
+  </div>
+</div>
