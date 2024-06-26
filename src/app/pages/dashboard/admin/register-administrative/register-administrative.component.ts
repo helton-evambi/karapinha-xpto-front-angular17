@@ -33,6 +33,7 @@ interface RegisterForm {
   Email: FormControl;
   PhoneNumber: FormControl;
   UserName: FormControl;
+  IdCard: FormControl;
   Password: FormControl;
   ConfirmPassword: FormControl;
 }
@@ -80,6 +81,7 @@ export class RegisterAdministrativeComponent {
         Validators.required,
         Validators.minLength(6),
       ]),
+      IdCard: new FormControl('', [Validators.required]),
       ConfirmPassword: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
