@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-type BtnVariants = 'primary' | 'secundary' | 'login';
+type BtnVariants = 'primary' | 'secundary' | 'login' | 'outline';
 type BtnColors = 'normal' | 'pink';
 type BtnSize = 'normal' | 'full';
 

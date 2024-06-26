@@ -5,11 +5,21 @@
   border-radius: 10px;
   cursor: pointer;
   color: $destac-color;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   &.login {
     background-color: $primary-color;
     color: $white-color;
     padding: 10px 40px;
+  }
+
+  &.outline {
+    border: 1px solid $white-color;
+    background-color: $primary-color;
+    color: $white-color;
+    padding: 7px 10px;
   }
 
   &.primary {
