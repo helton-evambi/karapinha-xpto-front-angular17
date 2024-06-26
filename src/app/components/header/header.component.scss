@@ -13,12 +13,28 @@ header {
 
   ul {
     display: flex;
+    align-items: center;
     gap: 10px;
     list-style: none;
 
     a {
       color: $white-color;
       text-decoration: none;
+    }
+    .profile {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
     }
   }
 }
