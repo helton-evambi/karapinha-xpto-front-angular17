@@ -4,6 +4,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { BookingService } from '../../services/booking.service';
 import { Booking } from '../../models/booking.model';
 import { Observable } from 'rxjs';
+import { Service } from '../../models/service.model';
 
 @Component({
   selector: 'app-confirm-booking',
@@ -18,5 +19,11 @@ export class ConfirmBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();
+  }
+
+  subimit() {
+    this.bookingService
+      .getBookingData()
+      .subscribe((value) => console.log(value));
   }
 }
