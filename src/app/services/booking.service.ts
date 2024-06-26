@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Service } from '../models/service.model';
 import { Professional } from '../models/professional.model';
 import { BookingServices } from '../models/booking-service.model';
+import { Time } from '../models/time.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { BookingServices } from '../models/booking-service.model';
 export class BookingService {
   private bookingData: Booking = {
     Services: [],
-    Total: 0,
+    Price: 0,
     Status: 'pending',
   };
 
@@ -26,7 +27,7 @@ export class BookingService {
       Service: service,
       Professional: undefined,
       Date: undefined,
-      TimeId: undefined,
+      Time: undefined,
     });
     this.bookingDataSubject$.next(this.bookingData);
   }
@@ -58,25 +59,25 @@ export class BookingService {
     this.bookingDataSubject$.next(this.bookingData);
   }
 
-  setTime(serviceId: number, time: number) {
+  setTime(serviceId: number, time: Time) {
     const service = this.bookingData.Services.find(
       (s: BookingServices) => s.Service.ServiceId == serviceId
     );
     if (service) {
-      service.TimeId = time;
+      service.Time = time;
     }
     this.bookingDataSubject$.next(this.bookingData);
   }
 
   setPrice(price: number) {
-    this.bookingData.Total = price;
+    this.bookingData.Price = price;
     this.bookingDataSubject$.next(this.bookingData);
   }
 
   clearBookingData() {
     this.bookingData = {
       Services: [],
-      Total: 0,
+      Price: 0,
       Status: 'pending',
     };
     this.bookingDataSubject$.next(this.bookingData);
