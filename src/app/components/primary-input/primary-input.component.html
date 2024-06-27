@@ -1,7 +1,15 @@
 <div class="input-wrapper">
   <label [for]="inputName">{{ label }}</label>
-  <div class="input-content">
+  <div class="input-content" [class]="size + ' ' + type">
+    @if (type === "file") {
+    <label [for]="inputName" class="custom-file-upload">
+      <ng-icon name="ionCloudUploadOutline" size="20" color="#565656"></ng-icon
+      >{{ fileName || "png, jpg, jpeg" }}
+    </label>
+    <span id="file-name"></span>
+    }
     <input
+      [id]="inputName"
       [type]="type"
       [placeholder]="placeholder"
       [value]="value"

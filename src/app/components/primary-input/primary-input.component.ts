@@ -1,22 +1,36 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { provideIcons, NgIconComponent } from '@ng-icons/core';
+import { ionCloudUploadOutline } from '@ng-icons/ionicons';
 
 type InputTypes = 'text' | 'email' | 'password' | 'file' | 'number';
+type SizeTypes = 'small' | 'normal';
 
 @Component({
   selector: 'app-primary-input',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIconComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => PrimaryInputComponent),
       multi: true,
     },
+  ],
+  viewProviders: [
+    provideIcons({
+      ionCloudUploadOutline,
+    }),
   ],
   templateUrl: './primary-input.component.html',
   styleUrl: './primary-input.component.scss',
@@ -26,6 +40,8 @@ export class PrimaryInputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() label: string = '';
   @Input() inputName: string = '';
+  @Input() size: SizeTypes = 'normal';
+  @Input() fileName: string = '';
 
   value: string = '';
   onChange: any = () => {};
