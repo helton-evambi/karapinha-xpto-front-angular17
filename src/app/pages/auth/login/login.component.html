@@ -10,7 +10,7 @@
           inputName="email"
           formControlName="Email"
           type="email"
-          label="Email"
+          label="Email ou Username"
           placeholder="heltonevambi@gmail.com"
         >
           <ng-icon name="matAlternateEmail"></ng-icon>
@@ -29,7 +29,7 @@
         </app-primary-input>
       </div>
       <div class="btn">
-        <a>Ainda não tem uma conta?</a>
+        <a routerLink="/signup">Ainda não tem uma conta?</a>
         <app-button btn-text="Login" variant="login" type="submit"></app-button>
         <!-- [disabled]="!registerForm.valid" -->
       </div>

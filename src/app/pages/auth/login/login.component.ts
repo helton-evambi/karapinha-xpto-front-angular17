@@ -3,11 +3,17 @@ import { PrimaryInputComponent } from '../../../components/primary-input/primary
 import { ButtonComponent } from '../../../components/button/button.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { matKey, matAlternateEmail } from '@ng-icons/material-icons/baseline';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [PrimaryInputComponent, ButtonComponent, NgIconComponent],
+  imports: [
+    PrimaryInputComponent,
+    ButtonComponent,
+    NgIconComponent,
+    RouterLink,
+  ],
   viewProviders: [
     provideIcons({
       matKey,
