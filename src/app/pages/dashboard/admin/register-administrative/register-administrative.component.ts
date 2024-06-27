@@ -6,6 +6,7 @@ import {
   ionPerson,
   ionPeople,
   ionPersonCircleSharp,
+  ionCard,
 } from '@ng-icons/ionicons';
 import {
   matPersonAddAlt1,
@@ -55,6 +56,7 @@ interface RegisterForm {
       ionBarChart,
       ionPerson,
       ionPeople,
+      ionCard,
       ionPersonCircleSharp,
       matPersonAddAlt1,
       matPersonSearch,
