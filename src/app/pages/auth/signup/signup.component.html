@@ -1,0 +1,131 @@
+<div class="container">
+  <div class="form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="logo">
+        <img src="../../../../assets/images/logo-light.png" />
+      </div>
+      <div>
+        <app-primary-input
+          inputName="firstName"
+          formControlName="FirstName"
+          type="text"
+          label="Primeiro Nome"
+          placeholder="Helton"
+          size="small"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+        <div
+          *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
+          class="alert"
+        >
+          <div *ngIf="firstName?.hasError('required')">Name is required.</div>
+          <div *ngIf="firstName?.hasError('minlength')">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+        <app-primary-input
+          inputName="lastName"
+          formControlName="LastName"
+          type="text"
+          label="Último Nome"
+          placeholder="Evambi"
+          size="small"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="email"
+          formControlName="EmailAddress"
+          type="email"
+          label="Email"
+          placeholder="heltonevambi@gmail.com"
+          size="small"
+        >
+          <ng-icon name="matAlternateEmail"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="phone"
+          formControlName="PhoneNumber"
+          type="number"
+          label="Telefone"
+          placeholder="929419140"
+          size="small"
+        >
+          <ng-icon name="matPhone"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="userName"
+          formControlName="Username"
+          type="text"
+          label="Username"
+          placeholder="helton_evambi"
+          size="small"
+        >
+          <ng-icon name="ionPersonCircleSharp"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="Photo"
+          type="file"
+          label="Foto"
+          size="small"
+          [fileName]="fileName"
+          (input)="onFileSelected($event)"
+        >
+          <ng-icon name="matPhoto"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="password"
+          formControlName="Password"
+          type="password"
+          label="Password"
+          placeholder="******"
+          size="small"
+        >
+          <ng-icon name="matKey"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="confirmPassword"
+          formControlName="ConfirmPassword"
+          type="password"
+          label="Confirmar Password"
+          placeholder="******"
+          size="small"
+        >
+          <ng-icon name="matKey"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div>
+        <app-primary-input
+          inputName="idCard"
+          formControlName="IdCard"
+          type="text"
+          label="Número do Bilhete"
+          placeholder="004034LA040"
+          size="small"
+        >
+          <ng-icon name="ionCard"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div class="btn">
+        <a routerLink="/login">Já tem uma conta?</a>
+        <app-button
+          btn-text="Cadastar"
+          variant="login"
+          type="submit"
+        ></app-button>
+        <!-- [disabled]="!registerForm.valid" -->
+      </div>
+    </form>
+  </div>
+
+  <div class="aside-image">
+    <img src="../../../../assets/images/KARAPINHA.png" />
+  </div>
+</div>

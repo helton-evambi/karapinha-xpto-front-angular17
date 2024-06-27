@@ -10,6 +10,7 @@ import { ManageAdministrativeComponent } from './pages/dashboard/admin/manage-ad
 import { RegisterAdministrativeComponent } from './pages/dashboard/admin/register-administrative/register-administrative.component';
 import { ListAdministativeComponent } from './pages/dashboard/admin/list-administative/list-administative.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'servicos',
