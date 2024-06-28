@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Booking } from '../models/booking.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Service } from '../models/service.model';
 import { Professional } from '../models/professional.model';
 import { BookingServices } from '../models/booking-service.model';
 import { Time } from '../models/time.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +15,11 @@ export class BookingService {
     Services: [],
     Price: 0,
     Status: 'pending',
+    UserId: Number(sessionStorage.getItem('id')),
   };
 
   private bookingDataSubject$ = new BehaviorSubject<Booking>(this.bookingData);
+  private http = inject(HttpClient);
 
   getBookingData(): Observable<Booking> {
     return this.bookingDataSubject$.asObservable();
@@ -79,7 +82,50 @@ export class BookingService {
       Services: [],
       Price: 0,
       Status: 'pending',
+      UserId: Number(sessionStorage.getItem('id')),
     };
     this.bookingDataSubject$.next(this.bookingData);
+  }
+
+  ////////////////////////////////////////////////////////
+
+  getBookings(): Observable<Booking[]> {
+    return this.http.get<Booking[]>('https://localhost:44350/api/bookings');
+  }
+
+  getBookingById(id: number): Observable<Booking> {
+    return this.http.get<Booking>(`https://localhost:44350/api/bookings/${id}`);
+  }
+
+  createBooking(booking: Booking): Observable<any> {
+    return this.http.post('https://localhost:44350/api/bookings', booking);
+  }
+
+  deleteCategory(id: number): Observable<any> {
+    return this.http.delete<any>(`https://localhost:44350/api/bookings/${id}`);
+  }
+
+  getRevenueForToday(): Observable<number> {
+    return this.http.get<number>(
+      'https://localhost:44350/api/bookings/revenue/today'
+    );
+  }
+
+  getRevenueForYesterday(): Observable<number> {
+    return this.http.get<number>(
+      'https://localhost:44350/api/bookings/revenue/yesterday'
+    );
+  }
+
+  getRevenueForCurrentMonth(): Observable<number> {
+    return this.http.get<number>(
+      'https://localhost:44350/api/bookings/revenue/current-month'
+    );
+  }
+
+  getRevenueForLastMonth(): Observable<number> {
+    return this.http.get<number>(
+      'https://localhost:44350/api/bookings/revenue/last-month'
+    );
   }
 }
