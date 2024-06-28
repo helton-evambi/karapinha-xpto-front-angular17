@@ -8,6 +8,7 @@ import { BookingService } from '../../services/booking.service';
 import { Observable } from 'rxjs';
 import { Booking } from '../../models/booking.model';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { ProfessionalService } from '../../services/professional.service';
 
 @Component({
   selector: 'app-choose-professional',
@@ -24,87 +25,21 @@ import { AsyncPipe, NgIf } from '@angular/common';
 })
 export class ChooseProfessionalComponent implements OnInit {
   private bookingService = inject(BookingService);
+  private professionalService = inject(ProfessionalService);
+
   getBooking$!: Observable<Booking>;
+  professionals$!: Observable<Professional[]>;
 
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();
   }
-  professional: Professional[] = [
-    {
-      ProfissionalId: 1,
-      EmailAddress: 'helton@gmail.com',
-      FirstName: 'Helton',
-      LastName: 'Evambi',
-      IdCard: 'vfdvdfbhdf',
-      PhomeNumber: 929419140,
-      PhotoUrl: '../../../assets/images/person1.jpg',
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Times: [
-        {
-          TimeId: 1,
-          Hour: 12,
-          Minute: 30,
-        },
-      ],
-    },
-    {
-      ProfissionalId: 1,
-      EmailAddress: 'helton@gmail.com',
-      FirstName: 'Helton',
-      LastName: 'Evambi',
-      IdCard: 'vfdvdfbhdf',
-      PhomeNumber: 929419140,
-      PhotoUrl: '../../../assets/images/person1.jpg',
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Times: [
-        {
-          TimeId: 1,
-          Hour: 12,
-          Minute: 30,
-        },
-      ],
-    },
-    {
-      ProfissionalId: 1,
-      EmailAddress: 'helton@gmail.com',
-      FirstName: 'Helton',
-      LastName: 'Evambi',
-      IdCard: 'vfdvdfbhdf',
-      PhomeNumber: 929419140,
-      PhotoUrl: '../../../assets/images/person1.jpg',
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Times: [
-        {
-          TimeId: 1,
-          Hour: 12,
-          Minute: 30,
-        },
-      ],
-    },
-  ];
+
   serviceId: number = 0;
   modalVisibility: boolean = false;
   openModal(serviceId: number) {
     this.modalVisibility = true;
     this.serviceId = serviceId;
+    this.professionals$ = this.professionalService.getByService(serviceId);
   }
   closeModal() {
     this.modalVisibility = false;

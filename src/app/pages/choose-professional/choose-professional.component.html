@@ -38,8 +38,8 @@
   (closeModal)="closeModal()"
   title="Corte de Cabelo"
 >
-  <div class="professonais">
-    @for (professional of professional; track professional.ProfissionalId) {
+  <div class="professonais" *ngIf="professionals$ | async as professionals">
+    @for (professional of professionals; track professional.ProfissionalId) {
     <div class="professional-card" (click)="addProfessional(professional)">
       <div class="img">
         <img [src]="professional.PhotoUrl" alt="" />
