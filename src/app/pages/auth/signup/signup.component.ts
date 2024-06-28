@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { PrimaryInputComponent } from '../../../components/primary-input/primary-input.component';
 import { ButtonComponent } from '../../../components/button/button.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -63,12 +63,13 @@ interface RegisterForm {
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
+  fileName: string = '';
   registerForm!: FormGroup<RegisterForm>;
   private toastr = inject(ToastrService);
   private authService = inject(AuthService);
 
-  constructor() {
+  ngOnInit(): void {
     this.registerForm = new FormGroup({
       FirstName: new FormControl('', [Validators.required]),
       LastName: new FormControl('', [Validators.required]),
@@ -102,8 +103,6 @@ export class SignupComponent {
     return this.registerForm.get('skill');
   }
 
-  fileName: string = '';
-
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -118,29 +117,27 @@ export class SignupComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       const formData = new FormData();
-      formData.append('FirstName', this.registerForm.get('FirstName')?.value);
-      formData.append('LastName', this.registerForm.get('LastName')?.value);
-      formData.append('Email', this.registerForm.get('EmailAddress')?.value);
-      formData.append('Username', this.registerForm.get('Username')?.value);
-      formData.append('Password', this.registerForm.get('Password')?.value);
+      formData.append('FirstName', this.registerForm.value.FirstName);
+      formData.append('LastName', this.registerForm.value.LastName);
+      formData.append('EmailAddress', this.registerForm.value.EmailAddress);
+      formData.append('Username', this.registerForm.value.Username);
+      formData.append('Password', this.registerForm.value.Password);
       formData.append(
         'ConfirmPassword',
-        this.registerForm.get('ConfirmPassword')?.value
+        this.registerForm.value.ConfirmPassword
       );
-      formData.append(
-        'PhoneNumber',
-        this.registerForm.get('PhoneNumber')?.value
-      );
-      formData.append('IdCard', this.registerForm.get('IdCard')?.value);
-      formData.append('PhotoUrl', this.registerForm.get('PhotoUrl')?.value);
+      formData.append('PhoneNumber', this.registerForm.value.PhoneNumber);
+      formData.append('IdCard', this.registerForm.value.IdCard);
+      formData.append('PhotoUrl', this.registerForm.value.PhotoUrl);
+      formData.append('Role', 'user');
 
-      console.log(this.registerForm.value);
       this.authService.register(formData).subscribe({
         next: () => this.toastr.success('Cadastro efetuado com sucesso'),
-        // error: (errorMessage) => this.toastr.error(errorMessage),
+        error: (errorMessage) =>
+          this.toastr.error('Ocorrei um erro ao fazer o cadastro'),
       });
     } else {
-      this.toastr.error('Prenncha o Primeiro nome');
+      this.toastr.error('Prenncha todos compos corretamente');
     }
   }
 }
