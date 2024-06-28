@@ -1,5 +1,5 @@
 <app-booking stepTitle="Selecionar Serviços" [stepNumber]="1">
-  <div class="container">
+  <div class="container" *ngIf="services$ | async as services">
     <h2 class="category"></h2>
     <div class="content">
       @for (service of services; track $index) {

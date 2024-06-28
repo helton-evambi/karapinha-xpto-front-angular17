@@ -7,6 +7,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { BookingService } from '../../services/booking.service';
 import { Booking } from '../../models/booking.model';
 import { Observable } from 'rxjs';
+import { ServiceService } from '../../services/service.service';
 
 @Component({
   selector: 'app-choose-service',
@@ -23,77 +24,16 @@ import { Observable } from 'rxjs';
 })
 export class ChooseServiceComponent implements OnInit {
   private bookingService = inject(BookingService);
+  private serviceService = inject(ServiceService);
+
   getBooking$!: Observable<Booking>;
-  services: Service[] = [
-    {
-      ServiceId: 1,
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Description: 'Um servico muito bom',
-      Image: 'sdfsdnfkjsd',
-      Nome: 'Gel',
-      Price: 10000,
-      EstimatedTime: 60,
-      Status: 'active',
-    },
-    {
-      ServiceId: 2,
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Description: 'Um servico muito bom e agradável',
-      Image: 'sdfsdnfkjsd',
-      Nome: 'Pedicure',
-      Price: 15000,
-      EstimatedTime: 60,
-      Status: 'active',
-    },
-    {
-      ServiceId: 3,
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Description: 'Um servico muito bom',
-      Image: 'sdfsdnfkjsd',
-      Nome: 'Unhas',
-      Price: 10000,
-      EstimatedTime: 60,
-      Status: 'active',
-    },
-    {
-      ServiceId: 4,
-      Category: {
-        CategoryId: 1,
-        Nome: 'Maquiagem',
-        Description: 'kjsk',
-        Imagem: 'fsdf',
-        Status: 'active',
-      },
-      Description: 'Um servico muito bom',
-      Image: 'sdfsdnfkjsd',
-      Nome: 'Corte de cabelo',
-      Price: 10000,
-      EstimatedTime: 60,
-      Status: 'active',
-    },
-  ];
+  services$!: Observable<Service[]>;
+
   onClick(service: Service) {
     this.bookingService.addService(service);
   }
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();
+    this.services$ = this.serviceService.getServices();
   }
 }
