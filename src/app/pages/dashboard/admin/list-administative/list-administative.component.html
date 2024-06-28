@@ -21,7 +21,7 @@
     </app-menu-itens>
   </div>
   <div main-content>
-    <div class="table">
+    <div class="table" *ngIf="administatives$ | async as administatives">
       <app-table>
         <th th>Nome</th>
         <th th>Email</th>
@@ -29,30 +29,45 @@
         <th th>Bilhete</th>
         <th th>Estado</th>
         <th th></th>
-
+        @for (administative of administatives; track $index) {
         <tr tr>
           <td>
             <div class="user-info">
               <div class="user-image">
+                @if (administative.PhotoUrl) {
                 <img
-                  src="../../../../../assets/images/salon4.jpg"
+                  [src]="'https://localhost:44350/' + administative.PhotoUrl"
                   alt="User Image"
                 />
+                } @else {
+
+                <ng-icon
+                  name="ionPersonCircleOutline"
+                  size="52"
+                  color="#9a9a9a"
+                ></ng-icon>
+
+                }
               </div>
 
-              <span>Maria Antonio</span>
+              <span>{{
+                administative.FirstName + " " + administative.LastName
+              }}</span>
             </div>
           </td>
-          <td>heltonevambi&#64;gmail.com</td>
-          <td>929419140</td>
-          <td>00554963LA040</td>
-          <td><span class="status blocked">Bloqueado</span></td>
+          <td>{{ administative.EmailAdress }}</td>
+          <td>{{ administative.PhoneNumber }}</td>
+          <td>{{ administative.IdCard }}</td>
+          <td>
+            <span class="status blocked">{{ administative.Status }}</span>
+          </td>
           <td>
             <span href="#" class="action-link" (click)="openModal(4)"
               >Ação</span
             >
           </td>
         </tr>
+        }
       </app-table>
     </div>
 
