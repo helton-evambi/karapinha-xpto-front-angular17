@@ -1,14 +1,13 @@
 <div class="container">
   <div class="form">
-    <form>
-      <!-- [formGroup]="registerForm" (ngSubmit)="onSubmit()" -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="logo">
         <img src="../../../../assets/images/logo-light.png" />
       </div>
       <div>
         <app-primary-input
           inputName="email"
-          formControlName="Email"
+          formControlName="identifier"
           type="email"
           label="Email ou Username"
           placeholder="heltonevambi@gmail.com"
@@ -20,7 +19,7 @@
       <div>
         <app-primary-input
           inputName="password"
-          formControlName="Password"
+          formControlName="password"
           type="password"
           label="Password"
           placeholder="******"
