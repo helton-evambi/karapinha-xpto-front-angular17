@@ -52,6 +52,7 @@ export class ChooseTimeComponent implements OnInit {
   addDate(serviceId: number, date: string) {
     this.bookingService.setDate(serviceId, date);
   }
+
   addTime(time: Time) {
     this.bookingService.setTime(this.serviceId, time);
     this.closeModal();
