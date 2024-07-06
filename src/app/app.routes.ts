@@ -11,6 +11,17 @@ import { RegisterAdministrativeComponent } from './pages/dashboard/admin/registe
 import { ListAdministativeComponent } from './pages/dashboard/admin/list-administative/list-administative.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
+import { ListUserComponent } from './pages/dashboard/admin/list-user/list-user.component';
+import { ListBookingComponent } from './pages/dashboard/administrative/list-booking/list-booking.component';
+import { ListCategoryComponent } from './pages/dashboard/administrative/list-category/list-category.component';
+import { ListProfessionalComponent } from './pages/dashboard/administrative/list-professional/list-professional.component';
+import { ListServiceComponent } from './pages/dashboard/administrative/list-service/list-service.component';
+import { ManageCategoryComponent } from './pages/dashboard/administrative/manage-category/manage-category.component';
+import { ManageProfessionalComponent } from './pages/dashboard/administrative/manage-professional/manage-professional.component';
+import { ManageServiceComponent } from './pages/dashboard/administrative/manage-service/manage-service.component';
+import { RegisterCategoryComponent } from './pages/dashboard/administrative/register-category/register-category.component';
+import { RegisterProfessionalComponent } from './pages/dashboard/administrative/register-professional/register-professional.component';
+import { RegisterServiceComponent } from './pages/dashboard/administrative/register-service/register-service.component';
 
 export const routes: Routes = [
   {
@@ -46,19 +57,63 @@ export const routes: Routes = [
     component: ConfirmBookingComponent,
   },
   {
-    path: 'admin/dashboard',
+    path: 'dashboard',
     component: AdminDashboardComponent,
   },
   {
-    path: 'admin/manage-administrative',
+    path: 'manage-administrative',
     component: ManageAdministrativeComponent,
   },
   {
-    path: 'admin/administrative/register',
+    path: 'administrative/register',
     component: RegisterAdministrativeComponent,
   },
   {
-    path: 'admin/administrative/list',
+    path: 'administrative/list',
     component: ListAdministativeComponent,
+  },
+  {
+    path: 'user/list',
+    component: ListUserComponent,
+  },
+  {
+    path: 'administative/booking/list',
+    component: ListBookingComponent,
+  },
+  {
+    path: 'category/list',
+    component: ListCategoryComponent,
+  },
+  {
+    path: 'professional/list',
+    component: ListProfessionalComponent,
+  },
+  {
+    path: 'service/list',
+    component: ListServiceComponent,
+  },
+  {
+    path: 'manage-category',
+    component: ManageCategoryComponent,
+  },
+  {
+    path: 'manage-professional',
+    component: ManageProfessionalComponent,
+  },
+  {
+    path: 'manage-service',
+    component: ManageServiceComponent,
+  },
+  {
+    path: 'category/register',
+    component: RegisterCategoryComponent,
+  },
+  {
+    path: 'professional/register',
+    component: RegisterProfessionalComponent,
+  },
+  {
+    path: 'service/register',
+    component: RegisterServiceComponent,
   },
 ];
