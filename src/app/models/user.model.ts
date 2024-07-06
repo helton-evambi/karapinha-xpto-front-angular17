@@ -8,5 +8,5 @@ export interface User {
   IdCard: string;
   Username: string;
   Status: string;
-  Role: 'admin' | 'administrative' | 'professional';
+  Role: string;
 }

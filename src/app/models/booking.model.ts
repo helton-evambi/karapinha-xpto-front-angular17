@@ -1,5 +1,4 @@
 import { BookingServices } from './booking-service.model';
-import { Time } from './time.model';
 import { User } from './user.model';
 
 export interface Booking {
