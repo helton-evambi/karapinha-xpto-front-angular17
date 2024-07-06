@@ -29,6 +29,22 @@
       line-height: 25px;
     }
   }
+  .booking {
+    width: 400px;
+    display: flex;
+    gap: 50px;
+    margin-top: 30px;
+
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      width: 50px;
+      font-size: 22px;
+      border: 0.1px solid #000;
+    }
+  }
 }
 
 .reverse {

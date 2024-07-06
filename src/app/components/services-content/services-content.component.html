@@ -5,5 +5,14 @@
   <div>
     <h1>{{ title }}</h1>
     <p>{{ text }}</p>
+    <div class="booking">
+      <div class="price">{{ price }}Kz</div>
+      <app-button
+        (click)="addService(service)"
+        btn-text="Agendar Serviço"
+        variant="login"
+        color="normal"
+      ></app-button>
+    </div>
   </div>
 </div>
