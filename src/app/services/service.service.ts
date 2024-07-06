@@ -17,6 +17,12 @@ export class ServiceService {
     return this.http.get<Service>(`https://localhost:44350/api/services/${id}`);
   }
 
+  getServicesByCategory(category: number): Observable<Service[]> {
+    return this.http.get<Service[]>(
+      `https://localhost:44350/api/services/getByCategory/${category}`
+    );
+  }
+
   createService(formData: FormData): Observable<any> {
     return this.http.post('https://localhost:44350/api/services', formData);
   }
