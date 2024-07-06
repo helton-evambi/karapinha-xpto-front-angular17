@@ -32,6 +32,7 @@ export class BookingService {
       Date: undefined,
       Time: undefined,
     });
+    this.bookingData.Price += service.Price;
     this.bookingDataSubject$.next(this.bookingData);
   }
 
