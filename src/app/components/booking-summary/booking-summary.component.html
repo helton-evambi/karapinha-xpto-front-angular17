@@ -1,5 +1,5 @@
 <div class="container">
-  <div>
+  <div *ngIf="getBooking$ | async as getBooking">
     <div class="header">
       <div class="img">
         <img src="../../../assets/images/logo.png" alt="" />
@@ -9,12 +9,12 @@
         <p>Luanda, Angola</p>
       </div>
     </div>
-    <div *ngIf="getBooking$ | async as getBooking">
+    <div>
       @for (service of getBooking.Services; track $index) {
       <div class="itens">
         <div class="itens-content">
           <div>
-            <h3>{{ service.Service.Nome }}</h3>
+            <h3>{{ service.Service.Name }}</h3>
             @if (service.Professional) {
             <span
               >com {{ service.Professional.FirstName }}
@@ -36,7 +36,7 @@
 
     <div class="total">
       <p>Total</p>
-      <p>20000kz</p>
+      <p>{{ getBooking.Price }} Kz</p>
     </div>
   </div>
   <div class="button">
