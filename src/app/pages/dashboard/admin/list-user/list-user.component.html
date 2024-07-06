@@ -1,7 +1,7 @@
 <app-dashboard-container
   uesrName="Helton"
   userRole="admin"
-  pageTitle="Lista de Administrativos"
+  pageTitle="Lista de Utilizadores"
 >
   <div menu-itens>
     <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
@@ -18,7 +18,7 @@
     </app-menu-itens>
   </div>
   <div main-content>
-    <div class="table" *ngIf="administatives$ | async as administatives">
+    <div class="table" *ngIf="users$ | async as users">
       <app-table>
         <th th>Nome</th>
         <th th>Email</th>
@@ -26,14 +26,14 @@
         <th th>Bilhete</th>
         <th th>Estado</th>
         <th th></th>
-        @for (administative of administatives; track $index) {
-        <tr tr *ngIf="administative.Role === 'administrative'">
+        @for (user of users; track $index) {
+        <tr tr *ngIf="user.Role === 'user'">
           <td>
             <div class="user-info">
               <div class="user-image">
-                @if (administative.PhotoUrl) {
+                @if (user.PhotoUrl) {
                 <img
-                  [src]="'https://localhost:44350/' + administative.PhotoUrl"
+                  [src]="'https://localhost:44350/' + user.PhotoUrl"
                   alt="User Image"
                 />
                 } @else {
@@ -47,17 +47,15 @@
                 }
               </div>
 
-              <span>{{
-                administative.FirstName + " " + administative.LastName
-              }}</span>
+              <span>{{ user.FirstName + " " + user.LastName }}</span>
             </div>
           </td>
-          <td>{{ administative.EmailAdress }}</td>
-          <td>{{ administative.PhoneNumber }}</td>
-          <td>{{ administative.IdCard }}</td>
+          <td>{{ user.EmailAdress }}</td>
+          <td>{{ user.PhoneNumber }}</td>
+          <td>{{ user.IdCard }}</td>
           <td>
-            <span class="status" [class]="administative.Status">{{
-              getStatus(administative.Status)
+            <span class="status" [class]="user.Status">{{
+              getStatus(user.Status)
             }}</span>
           </td>
           <td>
@@ -77,15 +75,9 @@
       (closeModal)="closeModal()"
       title="Escolha a ação"
     >
-      <app-action-card action="delete" entity="Administativo"></app-action-card>
-      <app-action-card
-        action="blocking"
-        entity="Administativo"
-      ></app-action-card>
-      <app-action-card
-        action="confirm"
-        entity="Administativo"
-      ></app-action-card>
+      <app-action-card action="delete" entity="Utilizador"></app-action-card>
+      <app-action-card action="blocking" entity="Utilizador"></app-action-card>
+      <app-action-card action="confirm" entity="Utilizador"></app-action-card>
     </app-modal>
   </div>
 </app-dashboard-container>

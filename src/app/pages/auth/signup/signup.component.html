@@ -15,15 +15,6 @@
         >
           <ng-icon name="matPermIdentity"></ng-icon>
         </app-primary-input>
-        <div
-          *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)"
-          class="alert"
-        >
-          <div *ngIf="firstName?.hasError('required')">Name is required.</div>
-          <div *ngIf="firstName?.hasError('minlength')">
-            Name must be at least 4 characters long.
-          </div>
-        </div>
         <app-primary-input
           inputName="lastName"
           formControlName="LastName"

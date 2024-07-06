@@ -1,25 +1,25 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { statusName } from '../../../../../utils/status';
+import { Observable } from 'rxjs';
+import { User } from '../../../../models/user.model';
+import { UserService } from '../../../../services/user.service';
 import { DashboardContainerComponent } from '../../dashboard-container/dashboard-container.component';
 import { MenuItensComponent } from '../../../../components/dashboard/menu-itens/menu-itens.component';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  ionBarChart,
-  ionPerson,
-  ionPeople,
-  ionPersonCircleOutline,
-} from '@ng-icons/ionicons';
 import { TableComponent } from '../../../../components/dashboard/table/table.component';
-import { RouterLink } from '@angular/router';
 import { ModalComponent } from '../../../../components/modal/modal.component';
 import { ActionCardComponent } from '../../../../components/dashboard/action-card/action-card.component';
-import { UserService } from '../../../../services/user.service';
-import { User } from '../../../../models/user.model';
-import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { statusName } from '../../../../../utils/status';
+import {
+  ionBarChart,
+  ionPeople,
+  ionPerson,
+  ionPersonCircleOutline,
+} from '@ng-icons/ionicons';
 
 @Component({
-  selector: 'app-list-administative',
+  selector: 'app-list-user',
   standalone: true,
   imports: [
     DashboardContainerComponent,
@@ -40,26 +40,26 @@ import { statusName } from '../../../../../utils/status';
       ionPersonCircleOutline,
     }),
   ],
-  templateUrl: './list-administative.component.html',
-  styleUrl: './list-administative.component.scss',
+  templateUrl: './list-user.component.html',
+  styleUrl: './list-user.component.scss',
 })
-export class ListAdministativeComponent implements OnInit {
+export class ListUserComponent implements OnInit {
   private userService = inject(UserService);
-  administatives$!: Observable<User[]>;
-  administrativeId: number = 0;
+  users$!: Observable<User[]>;
+  userId: number = 0;
   modalVisibility: boolean = false;
 
   ngOnInit(): void {
-    this.administatives$ = this.userService.getUsers();
+    this.users$ = this.userService.getUsers();
   }
 
   getStatus(status: string): string {
     return statusName(status);
   }
 
-  openModal(administrativeId: number) {
+  openModal(userId: number) {
     this.modalVisibility = true;
-    this.administrativeId = administrativeId;
+    this.userId = userId;
   }
   closeModal() {
     this.modalVisibility = false;

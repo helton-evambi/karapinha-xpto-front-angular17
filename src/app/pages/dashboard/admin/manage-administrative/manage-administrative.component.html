@@ -4,19 +4,16 @@
   pageTitle="Gerir Administrativos"
 >
   <div menu-itens>
-    <app-menu-itens menuName="Dashboard" routerLink="/admin/dashboard">
+    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
       <ng-icon name="ionBarChart" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens
       menuName="Gerir Adminstrativos"
-      routerLink="/admin/manage-administrative"
+      routerLink="/manage-administrative"
     >
       <ng-icon name="ionPerson" icon></ng-icon>
     </app-menu-itens>
-    <app-menu-itens
-      menuName="Gerir Utilizadores"
-      routerLink="/admin/manage-user"
-    >
+    <app-menu-itens menuName="Gerir Utilizadores" routerLink="/user/list">
       <ng-icon name="ionPeople" icon></ng-icon>
     </app-menu-itens>
   </div>
@@ -25,14 +22,14 @@
       <app-dashboard-card
         titlte="Cadastrar Administativo"
         page="manage"
-        routerLink="/admin/administrative/register"
+        routerLink="/administrative/register"
       >
         <ng-icon name="matPersonAddAlt1" size="50" titleIcon></ng-icon>
       </app-dashboard-card>
       <app-dashboard-card
         titlte="Listar Administativos"
         page="manage"
-        routerLink="/admin/administrative/list"
+        routerLink="/administrative/list"
       >
         <ng-icon name="matPersonSearch" size="50" titleIcon></ng-icon>
       </app-dashboard-card>

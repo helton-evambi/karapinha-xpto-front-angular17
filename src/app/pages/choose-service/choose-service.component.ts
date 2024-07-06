@@ -8,11 +8,14 @@ import { BookingService } from '../../services/booking.service';
 import { Booking } from '../../models/booking.model';
 import { Observable } from 'rxjs';
 import { ServiceService } from '../../services/service.service';
+import { FormsModule } from '@angular/forms';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-choose-service',
   standalone: true,
-  imports: [BookingComponent, NgIconComponent, AsyncPipe, NgIf],
+  imports: [BookingComponent, NgIconComponent, AsyncPipe, NgIf, FormsModule],
   viewProviders: [
     provideIcons({
       ionAddCircle,
@@ -25,15 +28,23 @@ import { ServiceService } from '../../services/service.service';
 export class ChooseServiceComponent implements OnInit {
   private bookingService = inject(BookingService);
   private serviceService = inject(ServiceService);
+  private categoryService = inject(CategoryService);
+
+  category!: number;
 
   getBooking$!: Observable<Booking>;
   services$!: Observable<Service[]>;
+  categories$!: Observable<Category[]>;
 
   onClick(service: Service) {
     this.bookingService.addService(service);
   }
+
+  getServices(category: number) {
+    this.services$ = this.serviceService.getServicesByCategory(category);
+  }
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();
-    this.services$ = this.serviceService.getServices();
+    this.categories$ = this.categoryService.getCategories();
   }
 }
