@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type BtnVariants = 'primary' | 'secundary' | 'login' | 'outline';
 type BtnColors = 'normal' | 'pink';
-type BtnSize = 'normal' | 'full';
+type BtnSize = 'small' | 'normal' | 'full';
 
 @Component({
   selector: 'app-button',
