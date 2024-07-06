@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -10,7 +10,13 @@ export class UserService {
   private http = inject(HttpClient);
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://localhost:44350/api/users');
+    return this.http
+      .get<User[]>('https://localhost:44350/api/users')
+      .pipe(
+        tap((value) =>
+          value.sort((a, b) => a.FirstName.localeCompare(b.FirstName))
+        )
+      );
   }
 
   getUserById(id: number): Observable<User> {
