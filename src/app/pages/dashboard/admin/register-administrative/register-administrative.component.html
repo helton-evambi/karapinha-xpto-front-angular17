@@ -4,19 +4,16 @@
   pageTitle="Cadastrar Administrativo"
 >
   <div menu-itens>
-    <app-menu-itens menuName="Dashboard" routerLink="/admin/dashboard">
+    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
       <ng-icon name="ionBarChart" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens
       menuName="Gerir Adminstrativos"
-      routerLink="/admin/manage-administrative"
+      routerLink="/manage-administrative"
     >
       <ng-icon name="ionPerson" icon></ng-icon>
     </app-menu-itens>
-    <app-menu-itens
-      menuName="Gerir Utilizadores"
-      routerLink="/admin/manage-user"
-    >
+    <app-menu-itens menuName="Gerir Utilizadores" routerLink="/user/list">
       <ng-icon name="ionPeople" icon></ng-icon>
     </app-menu-itens>
   </div>
@@ -45,7 +42,7 @@
       <div>
         <app-primary-input
           inputName="email"
-          formControlName="Email"
+          formControlName="EmailAddress"
           type="email"
           label="Email"
           placeholder="heltonevambi@gmail.com"
@@ -65,14 +62,20 @@
       <div>
         <app-primary-input
           inputName="userName"
-          formControlName="UserName"
+          formControlName="Username"
           type="text"
           label="Username"
           placeholder="helton_evambi"
         >
           <ng-icon name="ionPersonCircleSharp"></ng-icon>
         </app-primary-input>
-        <app-primary-input inputName="Photo" type="file" label="Foto">
+        <app-primary-input
+          inputName="Photo"
+          type="file"
+          label="Foto"
+          [fileName]="fileName"
+          (input)="onFileSelected($event)"
+        >
           <ng-icon name="matPhoto"></ng-icon>
         </app-primary-input>
       </div>
