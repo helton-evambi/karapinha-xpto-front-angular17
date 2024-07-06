@@ -1,0 +1,82 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Lista de Marcações"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Professionais"
+      routerLink="/manage-professional"
+    >
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Marcações" routerLink="/booking-list">
+      <ng-icon name="ionPeople" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="table" *ngIf="bookings$ | async as bookings">
+      <app-table>
+        <th th>Cliente</th>
+        <th th>Servicos</th>
+        <th th>Preço</th>
+        <th th>Estado</th>
+        <th th>Ação</th>
+        @for (booking of bookings; track $index) {
+        <tr tr>
+          <td>
+            {{ booking.User?.FirstName + " " + booking.User?.LastName }}
+          </td>
+          <td>
+            @if (booking.Services.length === 1) { @for (service of
+            booking.Services; track $index) {
+            {{ service.Service.Name }}
+            } } @else { {{ booking.Services.length }}}
+          </td>
+          <td>{{ booking.Price + " Kz" }}</td>
+          <td>
+            <span class="status" [class]="booking.Status">{{
+              getStatus(booking.Status)
+            }}</span>
+          </td>
+          <td>
+            <span
+              href="#"
+              class="action-link"
+              (click)="openModal(booking.BookingId || 0)"
+              >Ação</span
+            >
+          </td>
+        </tr>
+        }
+      </app-table>
+    </div>
+
+    <!-- MODAL -->
+
+    <app-modal
+      [visibility]="modalVisibility"
+      (closeModal)="closeModal()"
+      title="Escolha a ação"
+    >
+      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card
+        action="blocking"
+        entity="Administativo"
+      ></app-action-card>
+      <app-action-card
+        action="confirm"
+        entity="Administativo"
+      ></app-action-card>
+    </app-modal>
+  </div>
+</app-dashboard-container>
