@@ -12,6 +12,26 @@ h3 {
   margin: 40px 0;
 }
 
+.revenue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 130px;
+  background-color: #e8e8e8;
+  position: absolute;
+  margin-top: 150px;
+  div {
+    gap: 5px;
+    color: #4f4f4f;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .top-requests {
   display: flex;
   justify-content: space-between;
