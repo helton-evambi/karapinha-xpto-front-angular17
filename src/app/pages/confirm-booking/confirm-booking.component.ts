@@ -6,6 +6,8 @@ import { Booking } from '../../models/booking.model';
 import { Observable } from 'rxjs';
 import { Service } from '../../models/service.model';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { PdfGeneratorService } from '../../services/pdf-generator.service';
 
 @Component({
   selector: 'app-confirm-booking',
@@ -17,6 +19,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ConfirmBookingComponent implements OnInit {
   private bookingService = inject(BookingService);
   private toastr = inject(ToastrService);
+  private route = inject(Router);
+  private pdfGeneratorService = inject(PdfGeneratorService);
+
   getBooking$!: Observable<Booking>;
   submitBooking!: Booking;
   ngOnInit(): void {
@@ -25,10 +30,36 @@ export class ConfirmBookingComponent implements OnInit {
 
   subimit() {
     this.getBooking$.subscribe((value) => (this.submitBooking = value));
-    this.bookingService.createBooking(this.submitBooking).subscribe({
-      next: () => this.toastr.success('Marcação efetuada com sucesso'),
-      error: () => this.toastr.error('Ocorreu um erro ao fazer a marcação'),
-    });
-    this.bookingService.clearBookingData();
+    if (this.submitBooking.BookingId) {
+      this.bookingService
+        .updateBooking(this.submitBooking.BookingId, this.submitBooking)
+        .subscribe({
+          next: () => {
+            this.toastr.success('Marcação atualizada com sucesso');
+            this.generatePDF(this.submitBooking);
+            this.route.navigate(['user/list-booking']);
+            this.bookingService.clearBookingData();
+          },
+          error: () =>
+            this.toastr.error(
+              'Ocorreu um erro ao fazer a actualizacao da marcação'
+            ),
+        });
+      this.bookingService.clearBookingData();
+    } else {
+      this.bookingService.createBooking(this.submitBooking).subscribe({
+        next: () => {
+          this.toastr.success('Marcação efetuada com sucesso');
+          this.generatePDF(this.submitBooking);
+          this.route.navigate(['user/list-booking']);
+          this.bookingService.clearBookingData();
+        },
+        error: () => this.toastr.error('Ocorreu um erro ao fazer a marcação'),
+      });
+    }
+  }
+
+  generatePDF(bookinData: Booking) {
+    this.pdfGeneratorService.generatePDF(bookinData);
   }
 }
