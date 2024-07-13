@@ -22,6 +22,15 @@ import { ManageServiceComponent } from './pages/dashboard/administrative/manage-
 import { RegisterCategoryComponent } from './pages/dashboard/administrative/register-category/register-category.component';
 import { RegisterProfessionalComponent } from './pages/dashboard/administrative/register-professional/register-professional.component';
 import { RegisterServiceComponent } from './pages/dashboard/administrative/register-service/register-service.component';
+import { EditProfileComponent } from './pages/dashboard/administrative/edit-profile/edit-profile.component';
+import { UserEditProfileComponent } from './pages/user-profile/user-edit-profile/user-edit-profile.component';
+import { UserListBookingComponent } from './pages/user-profile/user-list-booking/user-list-booking.component';
+import { UserManageBookingComponent } from './pages/user-profile/user-manage-booking/user-manage-booking.component';
+import { AdministartiveDashboardComponent } from './pages/dashboard/administrative/administartive-dashboard/administartive-dashboard.component';
+import {
+  AuthGuard,
+  AuthGuardAdministrative,
+} from './services/auth-guard.service';
 
 export const routes: Routes = [
   {
@@ -43,77 +52,144 @@ export const routes: Routes = [
   {
     path: 'booking/choose-service',
     component: ChooseServiceComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
   },
   {
     path: 'booking/choose-profissional',
     component: ChooseProfessionalComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
   },
   {
     path: 'booking/choose-time',
     component: ChooseTimeComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
   },
   {
     path: 'booking/confirm',
     component: ConfirmBookingComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
   },
   {
     path: 'dashboard',
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'admin' },
   },
   {
     path: 'manage-administrative',
     component: ManageAdministrativeComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'admin' },
   },
   {
     path: 'administrative/register',
     component: RegisterAdministrativeComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'admin' },
   },
   {
     path: 'administrative/list',
     component: ListAdministativeComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'admin' },
   },
   {
     path: 'user/list',
     component: ListUserComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'admin' },
+  },
+  {
+    path: 'administrative/dashboard',
+    component: AdministartiveDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'administative/booking/list',
     component: ListBookingComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'category/list',
     component: ListCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'professional/list',
     component: ListProfessionalComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'service/list',
     component: ListServiceComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'manage-category',
     component: ManageCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'manage-professional',
     component: ManageProfessionalComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'manage-service',
     component: ManageServiceComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'category/register',
     component: RegisterCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'professional/register',
     component: RegisterProfessionalComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
   },
   {
     path: 'service/register',
     component: RegisterServiceComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
+  },
+  {
+    path: 'administrative/edit-profile',
+    component: EditProfileComponent,
+    canActivate: [AuthGuardAdministrative],
+  },
+  {
+    path: 'user/edit-profile',
+    component: UserEditProfileComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
+  },
+  {
+    path: 'user/list-booking',
+    component: UserListBookingComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
+  },
+  {
+    path: 'user/manage-booking',
+    component: UserManageBookingComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'user' },
   },
 ];
