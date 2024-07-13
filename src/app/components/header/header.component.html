@@ -6,18 +6,27 @@
       <li><a routerLink="/servicos">Serviços</a></li>
       <li><a routerLink="/contactos">Contacto</a></li>
       <li><a routerLink="/about">Sobre</a></li>
+
+      @if (logged) {
+
+      <div (click)="navegate()" class="profile" *ngIf="user$ | async as user">
+        @if (user.PhotoUrl) {
+        <img
+          [src]="'https://localhost:44350/' + user.PhotoUrl"
+          alt="User Image"
+        />
+        } @else {
+        <ng-icon name="ionPersonCircleSharp" size="35"></ng-icon>
+        }
+      </div>
+
+      } @else {
       <li>
         <app-button routerLink="/login" btn-text="Login" variant="outline"
           ><ng-icon name="matLoginOutline"></ng-icon
         ></app-button>
       </li>
-
-      <!-- <li>
-        <div routerLink="/login" class="profile">
-          <ng-icon name="ionPersonCircleSharp" size="35"></ng-icon>
-          <img src="../../../assets/images/salon3.jpg" /> 
-        </div>
-      </li> -->
+      }
     </ul>
   </nav>
 </header>
