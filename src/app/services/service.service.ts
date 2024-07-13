@@ -31,6 +31,17 @@ export class ServiceService {
     return this.http.delete<any>(`https://localhost:44350/api/services/${id}`);
   }
 
+  updateServiceStatus(id: number, status: string): Observable<any> {
+    const body = `"${status}"`;
+    return this.http.put<any>(
+      `https://localhost:44350/api/services/updateStatus/${id}`,
+      body,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
   getMostRequestedService(): Observable<Service> {
     return this.http.get<Service>(
       'https://localhost:44350/api/services/most-requested'
