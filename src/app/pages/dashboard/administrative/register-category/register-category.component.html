@@ -1,1 +1,72 @@
-<p>register-category works!</p>
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Cadastrar Categoria"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/administrative/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Professionais"
+      routerLink="/manage-professional"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
+      <ng-icon name="ionDocumentAttach" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionDuplicateOutline" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Listar de Marações"
+      routerLink="/administative/booking/list"
+    >
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <app-primary-input
+          inputName="name"
+          formControlName="Name"
+          type="text"
+          label="Nome"
+          placeholder="Unhas"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+        <app-primary-input
+          inputName="description"
+          formControlName="Description"
+          type="text"
+          label="Descrição"
+          placeholder="Uma categoria de alta qualidade"
+        >
+          <ng-icon name="matPermIdentity"></ng-icon>
+        </app-primary-input>
+      </div>
+
+      <div>
+        <app-primary-input
+          inputName="Photo"
+          type="file"
+          label="Foto"
+          [fileName]="fileName"
+          (input)="onFileSelected($event)"
+        >
+          <ng-icon name="matPhoto"></ng-icon>
+        </app-primary-input>
+      </div>
+      <div class="btn">
+        <app-button
+          btn-text="Registrar"
+          variant="login"
+          type="submit"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</app-dashboard-container>
