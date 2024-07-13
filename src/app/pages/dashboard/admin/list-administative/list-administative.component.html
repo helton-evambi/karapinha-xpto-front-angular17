@@ -4,7 +4,7 @@
   pageTitle="Lista de Administrativos"
 >
   <div menu-itens>
-    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
+    <app-menu-itens menuName="Dashboard" routerLink="/dashboard">
       <ng-icon name="ionBarChart" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens
@@ -52,7 +52,7 @@
               }}</span>
             </div>
           </td>
-          <td>{{ administative.EmailAdress }}</td>
+          <td>{{ administative.EmailAddress }}</td>
           <td>{{ administative.PhoneNumber }}</td>
           <td>{{ administative.IdCard }}</td>
           <td>
@@ -61,7 +61,10 @@
             }}</span>
           </td>
           <td>
-            <span href="#" class="action-link" (click)="openModal(4)"
+            <span
+              href="#"
+              class="action-link"
+              (click)="openModal(administative.UserId)"
               >Ação</span
             >
           </td>
@@ -81,11 +84,12 @@
       <app-action-card
         action="blocking"
         entity="Administativo"
+        (click)="updateStatus('block')"
       ></app-action-card>
-      <app-action-card
+      <!-- <app-action-card
         action="confirm"
         entity="Administativo"
-      ></app-action-card>
+      ></app-action-card> -->
     </app-modal>
   </div>
 </app-dashboard-container>

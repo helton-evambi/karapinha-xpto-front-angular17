@@ -17,6 +17,7 @@ import { User } from '../../../../models/user.model';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { statusName } from '../../../../../utils/status';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-administative',
@@ -45,6 +46,7 @@ import { statusName } from '../../../../../utils/status';
 })
 export class ListAdministativeComponent implements OnInit {
   private userService = inject(UserService);
+  private toastr = inject(ToastrService);
   administatives$!: Observable<User[]>;
   administrativeId: number = 0;
   modalVisibility: boolean = false;
@@ -63,5 +65,17 @@ export class ListAdministativeComponent implements OnInit {
   }
   closeModal() {
     this.modalVisibility = false;
+  }
+
+  updateStatus(status: string) {
+    this.userService.updateUserStatus(this.administrativeId, status).subscribe({
+      next: () => {
+        this.toastr.success('Estado atualizado com sucesso');
+        this.administatives$ = this.userService.getUsers();
+        this.closeModal();
+      },
+      error: (errorMessage) =>
+        this.toastr.error('Ocorreu um erro ao actualizar o estado'),
+    });
   }
 }
