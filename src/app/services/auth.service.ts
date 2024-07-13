@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from '../models/user.model';
-import { Session } from 'node:inspector';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private http = inject(HttpClient);
+  private route = inject(Router);
 
   register(formData: FormData): Observable<User> {
     return this.http
@@ -25,6 +26,11 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
+  logout() {
+    sessionStorage.setItem('isLogged', 'false');
+    sessionStorage.clear();
+    this.route.navigate(['/']);
+  }
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Erro inesperado!';
     if (error.error instanceof ErrorEvent) {
@@ -33,5 +39,9 @@ export class AuthService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
+  }
+
+  isLoggedIn(): boolean {
+    return sessionStorage.getItem('isLogged') === 'true';
   }
 }
