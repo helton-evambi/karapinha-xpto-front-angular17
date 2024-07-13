@@ -1,0 +1,107 @@
+@import "../../../../../variables/styles.variables.scss";
+@import "../../../../../assets/colors.scss";
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 75px;
+  justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 350px;
+    margin-bottom: 25px;
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      appearance: none; // Remove o estilo padrão
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+
+      &:focus {
+        border-color: #66afe9;
+        outline: none;
+        box-shadow: 0 0 5px rgba(102, 175, 233, 0.6);
+      }
+    }
+
+    // Adicionar um ícone de seta
+    &::after {
+      content: "\25BC"; // Código unicode para a seta para baixo
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      pointer-events: none; // Faz com que o clique passe através do ícone
+    }
+  }
+  select option {
+    padding: 10px;
+  }
+  .btn {
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  .time {
+    width: 460px;
+    display: flex;
+    justify-content: space-between;
+    label {
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .select-time {
+      width: 300px;
+      font-weight: 500;
+      border: 0.6px solid #000;
+      border-radius: $radius;
+      transition: ease-in-out 0.3s;
+      div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+      p {
+        color: #000;
+      }
+    }
+  }
+}
+
+app-modal {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .time-card {
+      padding: 20px;
+      width: 49%;
+      border: 0.6px solid $gray-color;
+      border-radius: $radius;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: ease-in-out 0.2s;
+
+      &:hover {
+        border-color: #000;
+      }
+    }
+  }
+}
