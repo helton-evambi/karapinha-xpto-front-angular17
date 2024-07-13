@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <div class="logo">XPTO</div>
+    <div class="logo" routerLink="/">XPTO</div>
     <div class="profile-info">
       <ng-icon name="ionSettingsSharp" color="#000000" size="25" />
       <div class="name">
@@ -16,7 +16,7 @@
     <div class="menu">
       <ng-content select="[menu-itens]"></ng-content>
     </div>
-    <div class="logout">
+    <div class="logout" (click)="logout()">
       <ng-icon name="ionLogOutOutline" size="24" /><span>Logout</span>
     </div>
   </aside>
