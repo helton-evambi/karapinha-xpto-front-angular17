@@ -23,6 +23,8 @@
                 name="ola"
                 id="date"
                 [value]="service.Date"
+                [value]="service.Date"
+                [min]="today"
                 #date
                 (change)="addDate(service.Service.ServiceId, date.value)"
               />

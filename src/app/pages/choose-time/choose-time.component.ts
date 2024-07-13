@@ -35,8 +35,15 @@ export class ChooseTimeComponent implements OnInit {
   getBooking$!: Observable<Booking>;
   modalVisibility: boolean = false;
 
+  today!: string;
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();
+
+    const todayDate = new Date();
+    const year = todayDate.getFullYear();
+    const month = ('0' + (todayDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + todayDate.getDate()).slice(-2);
+    this.today = `${year}-${month}-${day}`;
   }
 
   serviceId: number = 0;
