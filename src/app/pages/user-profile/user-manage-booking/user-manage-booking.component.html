@@ -1,0 +1,32 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Gerir Administrativos"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Perfíl" routerLink="/user/edit-profile">
+      <ng-icon name="ionPersonCircle" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Marações" routerLink="/user/manage-booking">
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="card">
+      <app-dashboard-card
+        titlte="Fazer Marcaçõo"
+        page="manage"
+        routerLink="/booking/choose-service"
+      >
+        <ng-icon name="matBookmarkAdd" size="50" titleIcon></ng-icon>
+      </app-dashboard-card>
+      <app-dashboard-card
+        titlte="Listar Marcação"
+        page="manage"
+        routerLink="/user/list-booking"
+      >
+        <ng-icon name="matContentPasteSearch" size="50" titleIcon></ng-icon>
+      </app-dashboard-card>
+    </div>
+  </div>
+</app-dashboard-container>
