@@ -12,7 +12,7 @@ import {
   matPhoto,
 } from '@ng-icons/material-icons/baseline';
 import { ionCard, ionPersonCircleSharp } from '@ng-icons/ionicons';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -68,6 +68,7 @@ export class SignupComponent implements OnInit {
   registerForm!: FormGroup<RegisterForm>;
   private toastr = inject(ToastrService);
   private authService = inject(AuthService);
+  private route = inject(Router);
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -116,28 +117,38 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const formData = new FormData();
-      formData.append('FirstName', this.registerForm.value.FirstName);
-      formData.append('LastName', this.registerForm.value.LastName);
-      formData.append('EmailAddress', this.registerForm.value.EmailAddress);
-      formData.append('Username', this.registerForm.value.Username);
-      formData.append('Password', this.registerForm.value.Password);
-      formData.append(
-        'ConfirmPassword',
+      if (
+        this.registerForm.value.Password ===
         this.registerForm.value.ConfirmPassword
-      );
-      formData.append('PhoneNumber', this.registerForm.value.PhoneNumber);
-      formData.append('IdCard', this.registerForm.value.IdCard);
-      formData.append('PhotoUrl', this.registerForm.value.PhotoUrl);
-      formData.append('Role', 'user');
+      ) {
+        const formData = new FormData();
+        formData.append('FirstName', this.registerForm.value.FirstName);
+        formData.append('LastName', this.registerForm.value.LastName);
+        formData.append('EmailAddress', this.registerForm.value.EmailAddress);
+        formData.append('Username', this.registerForm.value.Username);
+        formData.append('Password', this.registerForm.value.Password);
+        formData.append(
+          'ConfirmPassword',
+          this.registerForm.value.ConfirmPassword
+        );
+        formData.append('PhoneNumber', this.registerForm.value.PhoneNumber);
+        formData.append('IdCard', this.registerForm.value.IdCard);
+        formData.append('PhotoUrl', this.registerForm.value.PhotoUrl);
+        formData.append('Role', 'user');
 
-      this.authService.register(formData).subscribe({
-        next: () => this.toastr.success('Cadastro efetuado com sucesso'),
-        error: (errorMessage) =>
-          this.toastr.error('Ocorrei um erro ao fazer o cadastro'),
-      });
+        this.authService.register(formData).subscribe({
+          next: () => {
+            this.toastr.success('Cadastro efetuado com sucesso');
+            this.route.navigate(['/login']);
+          },
+          error: (errorMessage) =>
+            this.toastr.error('Ocorreu um erro ao fazer o cadastro'),
+        });
+      } else {
+        this.toastr.error('As password não coencidem');
+      }
     } else {
-      this.toastr.error('Prenncha todos compos corretamente');
+      this.toastr.error('Prenncha todos campos corretamente');
     }
   }
 }
