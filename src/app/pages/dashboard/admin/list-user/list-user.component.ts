@@ -17,6 +17,7 @@ import {
   ionPerson,
   ionPersonCircleOutline,
 } from '@ng-icons/ionicons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-user',
@@ -45,6 +46,7 @@ import {
 })
 export class ListUserComponent implements OnInit {
   private userService = inject(UserService);
+  private toastr = inject(ToastrService);
   users$!: Observable<User[]>;
   userId: number = 0;
   modalVisibility: boolean = false;
@@ -63,5 +65,17 @@ export class ListUserComponent implements OnInit {
   }
   closeModal() {
     this.modalVisibility = false;
+  }
+
+  updateStatus(status: string) {
+    this.userService.updateUserStatus(this.userId, status).subscribe({
+      next: () => {
+        this.toastr.success('Estado atualizado com sucesso');
+        this.users$ = this.userService.getUsers();
+        this.closeModal();
+      },
+      error: (errorMessage) =>
+        this.toastr.error('Ocorreu um erro ao actualizar o estado'),
+    });
   }
 }

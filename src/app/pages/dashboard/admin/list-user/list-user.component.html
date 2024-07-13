@@ -4,7 +4,7 @@
   pageTitle="Lista de Utilizadores"
 >
   <div menu-itens>
-    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
+    <app-menu-itens menuName="Dashboard" routerLink="/dashboard">
       <ng-icon name="ionBarChart" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens
@@ -50,7 +50,7 @@
               <span>{{ user.FirstName + " " + user.LastName }}</span>
             </div>
           </td>
-          <td>{{ user.EmailAdress }}</td>
+          <td>{{ user.EmailAddress }}</td>
           <td>{{ user.PhoneNumber }}</td>
           <td>{{ user.IdCard }}</td>
           <td>
@@ -59,7 +59,7 @@
             }}</span>
           </td>
           <td>
-            <span href="#" class="action-link" (click)="openModal(4)"
+            <span href="#" class="action-link" (click)="openModal(user.UserId)"
               >Ação</span
             >
           </td>
@@ -76,8 +76,16 @@
       title="Escolha a ação"
     >
       <app-action-card action="delete" entity="Utilizador"></app-action-card>
-      <app-action-card action="blocking" entity="Utilizador"></app-action-card>
-      <app-action-card action="confirm" entity="Utilizador"></app-action-card>
+      <app-action-card
+        action="blocking"
+        entity="Utilizador"
+        (click)="updateStatus('blocked')"
+      ></app-action-card>
+      <app-action-card
+        action="confirm"
+        entity="Utilizador"
+        (click)="updateStatus('active')"
+      ></app-action-card>
     </app-modal>
   </div>
 </app-dashboard-container>
