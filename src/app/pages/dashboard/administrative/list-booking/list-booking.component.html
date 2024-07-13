@@ -4,23 +4,26 @@
   pageTitle="Lista de Marcações"
 >
   <div menu-itens>
-    <app-menu-itens menuName="Dashboard" routerLink="/admin-dashboard">
+    <app-menu-itens menuName="Dashboard" routerLink="/administrative/dashboard">
       <ng-icon name="ionBarChart" icon></ng-icon>
-    </app-menu-itens>
-    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
-      <ng-icon name="ionPerson" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens
       menuName="Gerir Professionais"
       routerLink="/manage-professional"
     >
-      <ng-icon name="ionPeople" icon></ng-icon>
+      <ng-icon name="ionPerson" icon></ng-icon>
     </app-menu-itens>
     <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
-      <ng-icon name="ionPeople" icon></ng-icon>
+      <ng-icon name="ionDocumentAttach" icon></ng-icon>
     </app-menu-itens>
-    <app-menu-itens menuName="Gerir Marcações" routerLink="/booking-list">
-      <ng-icon name="ionPeople" icon></ng-icon>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionDuplicateOutline" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Listar de Marações"
+      routerLink="/administative/booking/list"
+    >
+      <ng-icon name="matBookmarks" icon></ng-icon>
     </app-menu-itens>
   </div>
   <div main-content>
@@ -37,10 +40,15 @@
             {{ booking.User?.FirstName + " " + booking.User?.LastName }}
           </td>
           <td>
-            @if (booking.Services.length === 1) { @for (service of
-            booking.Services; track $index) {
-            {{ service.Service.Name }}
-            } } @else { {{ booking.Services.length }}}
+            <span
+              href="#"
+              class="action-link"
+              (click)="openServiceModal(booking.BookingId || 0)"
+              >@if (booking.Services.length === 1) { @for (service of
+              booking.Services; track $index) {
+              {{ service.Service.Name }}
+              } } @else { {{ booking.Services.length }} Serviços}</span
+            >
           </td>
           <td>{{ booking.Price + " Kz" }}</td>
           <td>
@@ -68,15 +76,50 @@
       (closeModal)="closeModal()"
       title="Escolha a ação"
     >
-      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card action="delete" entity="Marcação"></app-action-card>
       <app-action-card
         action="blocking"
-        entity="Administativo"
+        entity="Marcação"
+        (click)="updateStatus('block')"
       ></app-action-card>
       <app-action-card
         action="confirm"
-        entity="Administativo"
+        entity="Marcação"
+        (click)="updateStatus('active')"
       ></app-action-card>
+    </app-modal>
+
+    <app-modal
+      [visibility]="modalServiceVisibility"
+      (closeModal)="closeModal()"
+      title="Servicos da marcacao"
+    >
+      <div class="container" *ngIf="booking$ | async as booking">
+        @for (service of booking.Services; track $index) {
+        <div class="card">
+          <div>
+            <h3>
+              {{ service.Service.Name }}
+              <span
+                >com {{ service.Professional?.FirstName }}
+                {{ service.Professional?.LastName }}</span
+              >
+            </h3>
+            <p>~{{ service.Service.EstimatedTime }} min</p>
+            <p>{{ service.Service.Price }} kz</p>
+            <p>{{ service.Service.Description }}</p>
+            <div class="select-container">
+              <div class="select">
+                {{ service.Date }}
+              </div>
+              <div class="select-time">
+                {{ service.Time?.Hour }}h{{ service.Time?.Minute }}
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
     </app-modal>
   </div>
 </app-dashboard-container>

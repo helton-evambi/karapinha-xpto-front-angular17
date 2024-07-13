@@ -1,0 +1,57 @@
+@import "../../../../../assets/colors.scss";
+@import "../../../../../variables/styles.variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+    border: 0.5px solid #000;
+    border-radius: $radius;
+    padding: 20px;
+    cursor: pointer;
+    transition: ease-in 0.2s;
+    &:hover {
+      background-color: #eaeaea;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 500;
+      span {
+        font-size: 13px;
+      }
+    }
+    p {
+      font-size: 14px;
+      color: $gray-color;
+    }
+    .select-container {
+      display: flex;
+      gap: 10px;
+      .select {
+        width: 300px;
+        padding: 5px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+        font-weight: 500;
+        border: 0.6px solid #000;
+        border-radius: $radius;
+        transition: ease-in-out 0.3s;
+        p {
+          color: #000;
+        }
+      }
+      .select-time {
+        @extend .select;
+        width: 250px;
+      }
+    }
+  }
+}
