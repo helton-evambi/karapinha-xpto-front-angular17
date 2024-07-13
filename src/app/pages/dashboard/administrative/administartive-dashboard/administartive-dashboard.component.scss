@@ -1,0 +1,45 @@
+@import "../../../../../assets/colors.scss";
+@import "../../../../../variables/styles.variables.scss";
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 40px 0;
+}
+
+.top-requests {
+  display: flex;
+  justify-content: space-between;
+  .top-professionais {
+    width: 65%;
+  }
+  .top-services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .card {
+      width: 350px;
+      height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: $radius;
+      background-color: $sidebar-color;
+      padding: 20px;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
