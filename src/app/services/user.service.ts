@@ -31,7 +31,25 @@ export class UserService {
 
   getUserByEmail(email: string): Observable<User> {
     return this.http.get<User>(
-      `https://localhost:44350/api/users/email${email}`
+      `https://localhost:44350/api/users/email/${email}`
+    );
+  }
+
+  updateUser(id: number, userData: any): Observable<any> {
+    return this.http.put<User>(
+      `https://localhost:44350/api/users/${id}`,
+      userData
+    );
+  }
+
+  updateUserStatus(id: number, status: string): Observable<any> {
+    const body = `"${status}"`;
+    return this.http.put<any>(
+      `https://localhost:44350/api/users/updateStatus/${id}`,
+      body,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
     );
   }
 
