@@ -1,1 +1,52 @@
-<p>manage-category works!</p>
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Gerir Categorias"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/administrative/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Professionais"
+      routerLink="/manage-professional"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
+      <ng-icon name="ionDocumentAttach" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionDuplicateOutline" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Listar de Marações"
+      routerLink="/administative/booking/list"
+    >
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="card">
+      <app-dashboard-card
+        titlte="Cadastrar Categoria"
+        page="manage"
+        routerLink="/category/register"
+      >
+        <ng-icon name="matAdd" size="50" titleIcon></ng-icon>
+      </app-dashboard-card>
+      <app-dashboard-card
+        titlte="Listar Categorias"
+        page="manage"
+        routerLink="/category/list"
+      >
+        <ng-icon
+          name="
+        matSearch"
+          size="50"
+          titleIcon
+        ></ng-icon>
+      </app-dashboard-card>
+    </div>
+  </div>
+</app-dashboard-container>
