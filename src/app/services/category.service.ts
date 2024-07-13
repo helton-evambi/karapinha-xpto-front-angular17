@@ -28,4 +28,15 @@ export class CategoryService {
       `https://localhost:44350/api/categories/${id}`
     );
   }
+
+  updateCategoryStatus(id: number, status: string): Observable<any> {
+    const body = `"${status}"`;
+    return this.http.put<any>(
+      `https://localhost:44350/api/categories/updateStatus/${id}`,
+      body,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
 }
