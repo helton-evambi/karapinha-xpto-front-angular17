@@ -39,10 +39,10 @@
   title="Corte de Cabelo"
 >
   <div class="professonais" *ngIf="professionals$ | async as professionals">
-    @for (professional of professionals; track professional.ProfissionalId) {
+    @for (professional of professionals; track professional.ProfessionalId) {
     <div class="professional-card" (click)="addProfessional(professional)">
       <div class="img">
-        <img [src]="professional.PhotoUrl" alt="" />
+        <img [src]="'https://localhost:44350' + professional.PhotoUrl" alt="" />
       </div>
       <p>{{ professional.FirstName }} {{ professional.LastName }}</p>
     </div>
