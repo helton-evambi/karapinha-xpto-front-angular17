@@ -1,0 +1,101 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Lista de Marcações"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Perfíl" routerLink="/user/edit-profile">
+      <ng-icon name="ionPersonCircle" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Marações" routerLink="/user/manage-booking">
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="table" *ngIf="bookings$ | async as bookings">
+      <app-table>
+        <th th>Servicos</th>
+        <th th>Preço</th>
+        <th th>Estado</th>
+        <th th>Ação</th>
+        @for (booking of bookings; track $index) {
+        <tr tr>
+          <td>
+            <span
+              href="#"
+              class="action-link"
+              (click)="openServiceModal(booking.BookingId || 0)"
+              >@if (booking.Services.length === 1) { @for (service of
+              booking.Services; track $index) {
+              {{ service.Service.Name }}
+              } } @else { {{ booking.Services.length }} Serviços}</span
+            >
+          </td>
+          <td>{{ booking.Price + " Kz" }}</td>
+          <td>
+            <span class="status" [class]="booking.Status">{{
+              getStatus(booking.Status)
+            }}</span>
+          </td>
+          <td>
+            <span href="#" class="action-link" (click)="editBooking(booking)"
+              >Editar</span
+            >
+          </td>
+        </tr>
+        }
+      </app-table>
+    </div>
+
+    <!-- MODAL -->
+
+    <app-modal
+      [visibility]="modalVisibility"
+      (closeModal)="closeModal()"
+      title="Escolha a ação"
+    >
+      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card
+        action="blocking"
+        entity="Administativo"
+      ></app-action-card>
+      <app-action-card
+        action="confirm"
+        entity="Administativo"
+      ></app-action-card>
+    </app-modal>
+
+    <app-modal
+      [visibility]="modalServiceVisibility"
+      (closeModal)="closeModal()"
+      title="Servicos da marcacao"
+    >
+      <div class="container" *ngIf="booking$ | async as booking">
+        @for (service of booking.Services; track $index) {
+        <div class="card">
+          <div>
+            <h3>
+              {{ service.Service.Name }}
+              <span
+                >com {{ service.Professional?.FirstName }}
+                {{ service.Professional?.LastName }}</span
+              >
+            </h3>
+            <p>~{{ service.Service.EstimatedTime }} min</p>
+            <p>{{ service.Service.Price }} kz</p>
+            <p>{{ service.Service.Description }}</p>
+            <div class="select-container">
+              <div class="select">
+                {{ service.Date }}
+              </div>
+              <div class="select-time">
+                {{ service.Time?.Hour }}h{{ service.Time?.Minute }}
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </app-modal>
+  </div>
+</app-dashboard-container>
