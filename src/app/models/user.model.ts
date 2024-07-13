@@ -2,7 +2,7 @@ export interface User {
   UserId: number;
   FirstName: string;
   LastName: string;
-  EmailAdress: string;
+  EmailAddress: string;
   PhotoUrl: string;
   PhoneNumber: number;
   IdCard: string;
