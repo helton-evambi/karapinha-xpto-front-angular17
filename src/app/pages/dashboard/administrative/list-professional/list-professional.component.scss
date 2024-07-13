@@ -1,0 +1,24 @@
+@import "../../../../../assets/colors.scss";
+@import "../../../../../variables/styles.variables.scss";
+
+.time {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .time-card {
+      padding: 20px;
+      width: 49%;
+      border: 0.6px solid $gray-color;
+      border-radius: $radius;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: ease-in-out 0.2s;
+
+      &:hover {
+        border-color: #000;
+      }
+    }
+  }
+}
