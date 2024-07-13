@@ -30,8 +30,6 @@ export class ChooseServiceComponent implements OnInit {
   private serviceService = inject(ServiceService);
   private categoryService = inject(CategoryService);
 
-  category!: number;
-
   getBooking$!: Observable<Booking>;
   services$!: Observable<Service[]>;
   categories$!: Observable<Category[]>;
@@ -40,8 +38,10 @@ export class ChooseServiceComponent implements OnInit {
     this.bookingService.addService(service);
   }
 
-  getServices(category: number) {
-    this.services$ = this.serviceService.getServicesByCategory(category);
+  getServices(category: string) {
+    this.services$ = this.serviceService.getServicesByCategory(
+      Number(category)
+    );
   }
   ngOnInit(): void {
     this.getBooking$ = this.bookingService.getBookingData();

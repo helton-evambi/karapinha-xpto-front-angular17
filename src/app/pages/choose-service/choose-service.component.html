@@ -1,12 +1,18 @@
 <app-booking stepTitle="Selecionar Serviços" [stepNumber]="1">
   <div class="container">
     <div class="select-wrapper" *ngIf="categories$ | async as categories">
-      <select [(ngModel)]="category" (change)="getServices(category)">
-        <option value="">Escolha a categoria</option>
-        @for (category of categories; track category.CategoryId) {
-        <option [value]="category.CategoryId">{{ category.Name }}</option>
-        }
-      </select>
+      <form>
+        <select
+          name="category"
+          #category
+          (change)="getServices(category.value)"
+        >
+          <option value="" selected hidden>Escolha a categoria</option>
+          @for (category of categories; track category.CategoryId) {
+          <option [value]="category.CategoryId">{{ category.Name }}</option>
+          }
+        </select>
+      </form>
     </div>
 
     <div class="content" *ngIf="services$ | async as services">
