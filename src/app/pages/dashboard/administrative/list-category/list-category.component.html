@@ -1,1 +1,80 @@
-<p>list-category works!</p>
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Lista de Categoria"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/administrative/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Professionais"
+      routerLink="/manage-professional"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
+      <ng-icon name="ionDocumentAttach" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionDuplicateOutline" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Listar de Marações"
+      routerLink="/administative/booking/list"
+    >
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="table" *ngIf="categories$ | async as categories">
+      <app-table>
+        <th th>Nome</th>
+        <th th>Descrição</th>
+        <th th>Estado</th>
+        <th th>Ação</th>
+        @for (category of categories; track $index) {
+        <tr tr>
+          <td>
+            {{ category.Name }}
+          </td>
+          <td>
+            {{ category.Description }}
+          </td>
+          <td>
+            <span class="status" [class]="category.Status">{{
+              getStatus(category.Status)
+            }}</span>
+          </td>
+          <td>
+            <span
+              href="#"
+              class="action-link"
+              (click)="openModal(category.CategoryId || 0)"
+              >Ação</span
+            >
+          </td>
+        </tr>
+        }
+      </app-table>
+    </div>
+
+    <!-- MODAL -->
+
+    <app-modal
+      [visibility]="modalVisibility"
+      (closeModal)="closeModal()"
+      title="Escolha a ação"
+    >
+      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card
+        action="blocking"
+        entity="Administativo"
+      ></app-action-card>
+      <app-action-card
+        action="confirm"
+        entity="Administativo"
+      ></app-action-card>
+    </app-modal>
+  </div>
+</app-dashboard-container>

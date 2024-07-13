@@ -5,12 +5,26 @@ import { Booking } from '../../../../models/booking.model';
 import { BookingService } from '../../../../services/booking.service';
 import { DashboardContainerComponent } from '../../dashboard-container/dashboard-container.component';
 import { MenuItensComponent } from '../../../../components/dashboard/menu-itens/menu-itens.component';
-import { NgIconComponent } from '@ng-icons/core';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { TableComponent } from '../../../../components/dashboard/table/table.component';
 import { ModalComponent } from '../../../../components/modal/modal.component';
 import { ActionCardComponent } from '../../../../components/dashboard/action-card/action-card.component';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
+import {
+  ionBarChart,
+  ionPerson,
+  ionPeople,
+  ionTrendingUpSharp,
+  ionTrendingDownSharp,
+  ionCashOutline,
+  ionArrowUp,
+  ionArrowDown,
+  ionDocumentAttach,
+  ionDuplicateOutline,
+} from '@ng-icons/ionicons';
+import { matBookmarks } from '@ng-icons/material-icons/baseline';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-booking',
@@ -26,14 +40,33 @@ import { AsyncPipe, NgIf } from '@angular/common';
     AsyncPipe,
     NgIf,
   ],
+  viewProviders: [
+    provideIcons({
+      ionBarChart,
+      ionPerson,
+      ionPeople,
+      ionTrendingUpSharp,
+      ionTrendingDownSharp,
+      ionCashOutline,
+      ionArrowUp,
+      ionArrowDown,
+      ionDocumentAttach,
+      ionDuplicateOutline,
+      matBookmarks,
+    }),
+  ],
   templateUrl: './list-booking.component.html',
   styleUrl: './list-booking.component.scss',
 })
 export class ListBookingComponent {
   private bookingService = inject(BookingService);
+  private toastr = inject(ToastrService);
+
   bookings$!: Observable<Booking[]>;
+  booking$!: Observable<Booking>;
   bookingId: number = 0;
   modalVisibility: boolean = false;
+  modalServiceVisibility: boolean = false;
 
   ngOnInit(): void {
     this.bookings$ = this.bookingService.getBookings();
@@ -47,7 +80,26 @@ export class ListBookingComponent {
     this.modalVisibility = true;
     this.bookingId = bookingId;
   }
+
+  openServiceModal(bookingId: number) {
+    this.modalServiceVisibility = true;
+    this.booking$ = this.bookingService.getBookingById(bookingId);
+  }
+
   closeModal() {
     this.modalVisibility = false;
+    this.modalServiceVisibility = false;
+  }
+
+  updateStatus(status: string) {
+    this.bookingService.updateBookingStatus(this.bookingId, status).subscribe({
+      next: () => {
+        this.toastr.success('Estado atualizado com sucesso');
+        this.bookings$ = this.bookingService.getBookings();
+        this.closeModal();
+      },
+      error: (errorMessage) =>
+        this.toastr.error('Ocorreu um erro ao actualizar o estado'),
+    });
   }
 }
