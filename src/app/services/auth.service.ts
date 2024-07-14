@@ -31,17 +31,26 @@ export class AuthService {
     sessionStorage.clear();
     this.route.navigate(['/']);
   }
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'Erro inesperado!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
-  }
 
   isLoggedIn(): boolean {
     return sessionStorage.getItem('isLogged') === 'true';
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Ocorreu um erro desconhecido';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Erro: ${error.error.message}`;
+    } else {
+      if (error.status === 409) {
+        errorMessage =
+          error.error ||
+          'Um usuário com este nome de usuário ou e-mail já existe.';
+      } else {
+        errorMessage = `Código do erro: ${error.status}, mensagem: ${
+          error.error || error.statusText
+        }`;
+      }
+    }
+    return throwError(() => new Error(errorMessage));
   }
 }
