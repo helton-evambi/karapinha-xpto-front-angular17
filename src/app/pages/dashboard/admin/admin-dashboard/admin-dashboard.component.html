@@ -19,22 +19,20 @@
   </div>
   <div main-content>
     <div class="card">
-      <ng-container *ngIf="revenue$ | async as revenue">
-        {{ revenue | json }}
-        <app-dashboard-card
-          title="Valor Faturado Hoje"
-          [value]="revenue"
-          (click)="showRevenueOptions()"
-        >
-          <ng-icon name="ionCashOutline" size="58" titleIcon></ng-icon>
-          <ng-icon
-            name="ionTrendingUpSharp"
-            size="60"
-            color="#3d9245"
-            valueIcon
-          ></ng-icon>
-        </app-dashboard-card>
-      </ng-container>
+      <app-dashboard-card
+        titlte="Valor Faturado Hoje"
+        [value]="revenue"
+        (click)="showRevenueOptions()"
+      >
+        <ng-icon name="ionCashOutline" size="58" titleIcon></ng-icon>
+        <ng-icon
+          name="ionTrendingUpSharp"
+          size="60"
+          color="#3d9245"
+          valueIcon
+        ></ng-icon>
+      </app-dashboard-card>
+
       @if (revenueOptions) {
       <div class="revenue">
         <div (click)="getRevenueForToday()">Receita de Hoje</div>

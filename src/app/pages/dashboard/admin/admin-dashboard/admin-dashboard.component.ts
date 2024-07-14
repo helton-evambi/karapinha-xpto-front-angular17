@@ -56,14 +56,16 @@ export class AdminDashboardComponent implements OnInit {
   private professionalService = inject(ProfessionalService);
   private serviceService = inject(ServiceService);
 
-  revenue$!: Observable<number>;
+  revenue!: number;
   topProfessionals$!: Observable<Professional[]>;
   mostRequestedService$!: Observable<Service>;
   leastRequestedService$!: Observable<Service>;
 
   revenueOptions: boolean = false;
   ngOnInit(): void {
-    this.revenue$ = of(0);
+    this.bookingService
+      .getRevenueForToday()
+      .subscribe((value) => (this.revenue = value));
     this.topProfessionals$ = this.professionalService.getTop5Professionals();
     this.mostRequestedService$ = this.serviceService.getMostRequestedService();
     this.leastRequestedService$ =
@@ -75,22 +77,30 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getRevenueForToday() {
-    this.revenue$ = this.bookingService.getRevenueForToday();
+    this.bookingService
+      .getRevenueForToday()
+      .subscribe((value) => (this.revenue = value));
     this.revenueOptions = false;
   }
 
   getRevenueForYesterday() {
-    this.revenue$ = this.bookingService.getRevenueForYesterday();
+    this.bookingService
+      .getRevenueForYesterday()
+      .subscribe((value) => (this.revenue = value));
     this.revenueOptions = false;
   }
 
   getRevenueForCurrentMonth() {
-    this.revenue$ = this.bookingService.getRevenueForCurrentMonth();
+    this.bookingService
+      .getRevenueForCurrentMonth()
+      .subscribe((value) => (this.revenue = value));
     this.revenueOptions = false;
   }
 
   getRevenueForLastMonth() {
-    this.revenue$ = this.bookingService.getRevenueForLastMonth();
+    this.bookingService
+      .getRevenueForLastMonth()
+      .subscribe((value) => (this.revenue = value));
     this.revenueOptions = false;
   }
 }
