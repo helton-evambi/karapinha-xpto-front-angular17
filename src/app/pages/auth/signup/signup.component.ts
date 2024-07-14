@@ -97,13 +97,6 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  get firstName() {
-    return this.registerForm.get('FirstName');
-  }
-  get skill() {
-    return this.registerForm.get('skill');
-  }
-
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -141,8 +134,7 @@ export class SignupComponent implements OnInit {
             this.toastr.success('Cadastro efetuado com sucesso');
             this.route.navigate(['/login']);
           },
-          error: (errorMessage) =>
-            this.toastr.error('Ocorreu um erro ao fazer o cadastro'),
+          error: (errorMessage) => this.toastr.error(String(errorMessage)),
         });
       } else {
         this.toastr.error('As password não coencidem');
