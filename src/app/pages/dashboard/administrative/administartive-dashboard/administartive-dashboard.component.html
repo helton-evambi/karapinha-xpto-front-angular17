@@ -28,15 +28,29 @@
   </div>
   <div main-content>
     <div class="card">
-      <app-dashboard-card titlte="Valor Faturado" [value]="50">
+      <app-dashboard-card
+        titlte="Valor Faturado Hoje"
+        [value]="revenue"
+        (click)="showRevenueOptions()"
+      >
         <ng-icon name="ionCashOutline" size="58" titleIcon></ng-icon>
         <ng-icon
           name="ionTrendingUpSharp"
           size="60"
           color="#3d9245"
           valueIcon
-        ></ng-icon
-      ></app-dashboard-card>
+        ></ng-icon>
+      </app-dashboard-card>
+
+      @if (revenueOptions) {
+      <div class="revenue">
+        <div (click)="getRevenueForToday()">Receita de Hoje</div>
+        <div (click)="getRevenueForYesterday()">Receita de Ontem</div>
+        <div (click)="getRevenueForCurrentMonth()">Receita deste Mês</div>
+        <div (click)="getRevenueForLastMonth()">Receita do Mês passado</div>
+      </div>
+      }
+
       <app-dashboard-card titlte="Utilizadores Activos" [value]="50">
         <ng-icon name="ionPeople" size="58" titleIcon></ng-icon>
         <ng-icon
@@ -58,105 +72,53 @@
     </div>
     <h3>Top 5 Profissionais mais solicitado</h3>
     <div class="top-requests">
-      <div class="top-professionais">
+      <div
+        class="top-professionais"
+        *ngIf="topProfessionals$ | async as professionals"
+      >
         <app-table>
           <th th>Nome</th>
           <th th>Categotia</th>
           <th th>Solicitações</th>
+          @for (professional of professionals; track $index) {
           <tr tr>
             <td>
               <div class="user-info">
                 <div class="user-image">
                   <img
-                    src="../../../../../assets/images/gallery1.jpg"
+                    [src]="'https://localhost:44350/' + professional.PhotoUrl"
                     alt="User Image"
                   />
                 </div>
 
-                <span>Maria Antonio</span>
+                <span
+                  >{{ professional.FirstName }}
+                  {{ professional.LastName }}</span
+                >
               </div>
             </td>
-            <td>Cabelo</td>
+            <td>{{ professional.Category.Name }}</td>
             <td>7</td>
           </tr>
-          <tr tr>
-            <td>
-              <div class="user-info">
-                <div class="user-image">
-                  <img
-                    src="../../../../../assets/images/person2.jpg"
-                    alt="User Image"
-                  />
-                </div>
-
-                <span>Maria Antonio</span>
-              </div>
-            </td>
-            <td>Cabelo</td>
-            <td>3</td>
-          </tr>
-          <tr tr>
-            <td>
-              <div class="user-info">
-                <div class="user-image">
-                  <img
-                    src="../../../../../assets/images/salon2.jpg"
-                    alt="User Image"
-                  />
-                </div>
-
-                <span>Maria Antonio</span>
-              </div>
-            </td>
-            <td>Cabelo</td>
-            <td>92</td>
-          </tr>
-          <tr tr>
-            <td>
-              <div class="user-info">
-                <div class="user-image">
-                  <img
-                    src="../../../../../assets/images/salon4.jpg"
-                    alt="User Image"
-                  />
-                </div>
-
-                <span>Maria Antonio</span>
-              </div>
-            </td>
-            <td>Cabelo</td>
-            <td>7</td>
-          </tr>
-          <tr tr>
-            <td>
-              <div class="user-info">
-                <div class="user-image">
-                  <img
-                    src="../../../../../assets/images/salon5.jpg"
-                    alt="User Image"
-                  />
-                </div>
-
-                <span>Maria Antonio</span>
-              </div>
-            </td>
-            <td>Cabelo</td>
-            <td>9</td>
-          </tr>
+          }
         </app-table>
       </div>
       <div class="top-services">
         <div class="card">
           <h4>Serviço mais solicitado</h4>
           <div>
-            <span>Corte de Cabelo</span>
+            <span *ngIf="mostRequestedService$ | async as mostService">{{
+              mostService.Name
+            }}</span>
             <ng-icon name="ionArrowUp" color="#3d9245" size="60"></ng-icon>
           </div>
         </div>
         <div class="card">
           <h4>Serviço menos solicitado</h4>
           <div>
-            <span>Manicure</span>
+            <span *ngIf="leastRequestedService$ | async as leastService">{{
+              leastService.Name
+            }}</span>
             <ng-icon name="ionArrowDown" color="#c51212" size="60"></ng-icon>
           </div>
         </div>
