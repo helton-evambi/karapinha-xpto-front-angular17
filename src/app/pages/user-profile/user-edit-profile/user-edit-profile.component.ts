@@ -89,23 +89,27 @@ export class UserEditProfileComponent {
   }
 
   loadUserData(): void {
-    this.userService.getUserById(16).subscribe({
-      next: (userData) => {
-        this.updateForm.patchValue(userData);
-        console.log('Form after patch:', this.updateForm.value);
-        this.cdr.detectChanges();
-      },
-      error: (err) => console.error(err),
-    });
+    this.userService
+      .getUserById(Number(sessionStorage.getItem('id')))
+      .subscribe({
+        next: (userData) => {
+          this.updateForm.patchValue(userData);
+          console.log('Form after patch:', this.updateForm.value);
+          this.cdr.detectChanges();
+        },
+        error: (err) => console.error(err),
+      });
   }
 
   onSubmit() {
     if (this.updateForm.valid) {
-      this.userService.updateUser(16, this.updateForm.value).subscribe({
-        next: () => this.toastr.success('Actualizacao efetuado com sucesso'),
-        error: (errorMessage) =>
-          this.toastr.error('Ocorreu um erro ao actualizar os dados'),
-      });
+      this.userService
+        .updateUser(Number(sessionStorage.getItem('id')), this.updateForm.value)
+        .subscribe({
+          next: () => this.toastr.success('Actualizacao efetuado com sucesso'),
+          error: (errorMessage) =>
+            this.toastr.error('Ocorreu um erro ao actualizar os dados'),
+        });
     } else {
       this.toastr.error('Prenncha todos compos corretamente');
     }

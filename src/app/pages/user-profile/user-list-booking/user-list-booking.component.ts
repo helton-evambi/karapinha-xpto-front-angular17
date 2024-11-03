@@ -47,7 +47,9 @@ export class UserListBookingComponent {
   modalServiceVisibility: boolean = false;
 
   ngOnInit(): void {
-    this.bookings$ = this.bookingService.getBookings();
+    this.bookings$ = this.bookingService.getBookingByUser(
+      Number(sessionStorage.getItem('id'))
+    );
   }
 
   getStatus(status: string): string {
