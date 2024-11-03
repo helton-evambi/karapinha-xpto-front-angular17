@@ -36,6 +36,8 @@ export class ConfirmBookingComponent implements OnInit {
         .subscribe({
           next: () => {
             this.toastr.success('Marcação atualizada com sucesso');
+
+            console.log(this.submitBooking);
             this.generatePDF(this.submitBooking);
             this.route.navigate(['user/list-booking']);
             this.bookingService.clearBookingData();
@@ -45,7 +47,6 @@ export class ConfirmBookingComponent implements OnInit {
               'Ocorreu um erro ao fazer a actualizacao da marcação'
             ),
         });
-      this.bookingService.clearBookingData();
     } else {
       this.bookingService.createBooking(this.submitBooking).subscribe({
         next: () => {
