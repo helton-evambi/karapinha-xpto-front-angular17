@@ -19,10 +19,7 @@
     <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
       <ng-icon name="ionDuplicateOutline" icon></ng-icon>
     </app-menu-itens>
-    <app-menu-itens
-      menuName="Listar de Marações"
-      routerLink="/administative/booking/list"
-    >
+    <app-menu-itens menuName="Gerir Marcações" routerLink="/manage-booking">
       <ng-icon name="matBookmarks" icon></ng-icon>
     </app-menu-itens>
   </div>
@@ -96,7 +93,11 @@
       (closeModal)="closeModal()"
       title="Escolha a ação"
     >
-      <app-action-card action="delete" entity="Administativo"></app-action-card>
+      <app-action-card
+        action="delete"
+        entity="Administativo"
+        (click)="deleteProfessional()"
+      ></app-action-card>
       <app-action-card
         action="blocking"
         entity="Administativo"
