@@ -148,8 +148,7 @@ export class RegisterAdministrativeComponent {
 
       this.authService.register(formData).subscribe({
         next: () => this.toastr.success('Cadastro efetuado com sucesso'),
-        error: (errorMessage) =>
-          this.toastr.error('Ocorreu um erro ao fazer o cadastro'),
+        error: (errorMessage) => this.toastr.error(String(errorMessage)),
       });
     } else {
       this.toastr.error('Prenncha todos compos corretamente');
