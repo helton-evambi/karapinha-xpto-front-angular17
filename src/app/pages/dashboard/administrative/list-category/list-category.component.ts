@@ -24,6 +24,7 @@ import {
   ionDuplicateOutline,
 } from '@ng-icons/ionicons';
 import { matBookmarks } from '@ng-icons/material-icons/baseline';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-category',
@@ -59,12 +60,24 @@ import { matBookmarks } from '@ng-icons/material-icons/baseline';
 })
 export class ListCategoryComponent {
   private categoryService = inject(CategoryService);
+  private toastr = inject(ToastrService);
+
   categories$!: Observable<Category[]>;
   categoryId: number = 0;
   modalVisibility: boolean = false;
 
   ngOnInit(): void {
     this.categories$ = this.categoryService.getCategories();
+  }
+
+  deleteCategory() {
+    this.categoryService.deleteCategory(this.categoryId).subscribe({
+      next: () => {
+        this.toastr.success('Categoria eliminada com sucesso');
+        this.categories$ = this.categoryService.getCategories();
+        this.closeModal();
+      },
+    });
   }
 
   getStatus(status: string): string {

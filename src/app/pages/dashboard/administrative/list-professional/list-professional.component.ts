@@ -24,6 +24,7 @@ import {
   ionDuplicateOutline,
 } from '@ng-icons/ionicons';
 import { matBookmarks } from '@ng-icons/material-icons/baseline';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-professional',
@@ -59,6 +60,8 @@ import { matBookmarks } from '@ng-icons/material-icons/baseline';
 })
 export class ListProfessionalComponent {
   private professionalService = inject(ProfessionalService);
+  private toastr = inject(ToastrService);
+
   professionals$!: Observable<Professional[]>;
   timeProfessional$!: Observable<Professional>;
   professionalId: number = 0;
@@ -67,6 +70,16 @@ export class ListProfessionalComponent {
 
   ngOnInit(): void {
     this.professionals$ = this.professionalService.getBProfessioals();
+  }
+
+  deleteProfessional() {
+    this.professionalService.deleteProfessioal(this.professionalId).subscribe({
+      next: () => {
+        this.toastr.success('Professional eliminado com sucesso');
+        this.professionals$ = this.professionalService.getBProfessioals();
+        this.closeModal();
+      },
+    });
   }
 
   getStatus(status: string): string {

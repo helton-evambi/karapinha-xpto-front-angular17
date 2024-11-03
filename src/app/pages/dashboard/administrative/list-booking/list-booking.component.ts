@@ -91,6 +91,16 @@ export class ListBookingComponent {
     this.modalServiceVisibility = false;
   }
 
+  deleteBooking() {
+    this.bookingService.deleteBooking(this.bookingId).subscribe({
+      next: () => {
+        this.toastr.success('Marcacao eliminada com sucesso');
+        this.bookings$ = this.bookingService.getBookings();
+        this.closeModal();
+      },
+    });
+  }
+
   updateStatus(status: string) {
     this.bookingService.updateBookingStatus(this.bookingId, status).subscribe({
       next: () => {

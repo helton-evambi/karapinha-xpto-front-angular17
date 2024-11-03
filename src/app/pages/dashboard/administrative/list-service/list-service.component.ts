@@ -24,6 +24,7 @@ import {
   ionDuplicateOutline,
 } from '@ng-icons/ionicons';
 import { matBookmarks } from '@ng-icons/material-icons/baseline';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-service',
@@ -59,12 +60,24 @@ import { matBookmarks } from '@ng-icons/material-icons/baseline';
 })
 export class ListServiceComponent {
   private serviceService = inject(ServiceService);
+  private toastr = inject(ToastrService);
+
   services$!: Observable<Service[]>;
   serviceId: number = 0;
   modalVisibility: boolean = false;
 
   ngOnInit(): void {
     this.services$ = this.serviceService.getServices();
+  }
+
+  deleteService() {
+    this.serviceService.deleteService(this.serviceId).subscribe({
+      next: () => {
+        this.toastr.success('Professional eliminado com sucesso');
+        this.services$ = this.serviceService.getServices();
+        this.closeModal();
+      },
+    });
   }
 
   getStatus(status: string): string {
