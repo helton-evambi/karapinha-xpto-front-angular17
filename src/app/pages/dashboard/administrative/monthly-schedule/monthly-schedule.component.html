@@ -1,0 +1,96 @@
+<app-dashboard-container
+  uesrName="Helton"
+  userRole="admin"
+  pageTitle="Lista de Marcações"
+>
+  <div menu-itens>
+    <app-menu-itens menuName="Dashboard" routerLink="/administrative/dashboard">
+      <ng-icon name="ionBarChart" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens
+      menuName="Gerir Professionais"
+      routerLink="/manage-professional"
+    >
+      <ng-icon name="ionPerson" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Serviços" routerLink="/manage-service">
+      <ng-icon name="ionDocumentAttach" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Categorias" routerLink="/manage-category">
+      <ng-icon name="ionDuplicateOutline" icon></ng-icon>
+    </app-menu-itens>
+    <app-menu-itens menuName="Gerir Marcações" routerLink="/manage-booking">
+      <ng-icon name="matBookmarks" icon></ng-icon>
+    </app-menu-itens>
+  </div>
+  <div main-content>
+    <div class="calendar" *ngIf="calendarDays$ | async as calendarDays">
+      <div class="calendar-header">
+        <button (click)="previousMonth()">&lt;</button>
+        <h2>{{ currentMonthYear | date : "MMMM yyyy" }}</h2>
+        <button (click)="nextMonth()">&gt;</button>
+      </div>
+      <table class="calendar-table">
+        <thead>
+          <tr>
+            <th *ngFor="let day of weekDays">{{ day }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let week of calendarDays">
+            <td *ngFor="let day of week" [class.other-month]="day.otherMonth">
+              <div class="day-number">{{ day.date | date : "d" }}</div>
+              <div class="bookings-container">
+                <ng-container>
+                  <div
+                    *ngFor="let booking of getBookingsForDay(day.date)"
+                    class="booking-item"
+                    [class]="booking.Status"
+                    (click)="openServiceModal(booking.BookingId || 0)"
+                  >
+                    {{ booking.User?.FirstName }} {{ booking.User?.LastName }}
+                  </div>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MODAL -->
+
+    <app-modal
+      [visibility]="modalServiceVisibility"
+      (closeModal)="closeModal()"
+      title="Servicos da marcacao"
+    >
+      <div class="container" *ngIf="booking$ | async as booking">
+        @for (service of booking.Services; track $index) {
+        <div class="card">
+          <div>
+            <h3>
+              {{ service.Service.Name }}
+              <span
+                >com {{ service.Professional?.FirstName }}
+                {{ service.Professional?.LastName }}</span
+              >
+            </h3>
+            <p>~{{ service.Service.EstimatedTime }} min</p>
+            <p>{{ service.Service.Price }} kz</p>
+            <p>{{ service.Service.Description }}</p>
+            <div class="select-container">
+              <div class="select">
+                {{ service.Date }}
+              </div>
+              <div class="select-time">
+                {{ service.Time?.Hour }}h{{ service.Time?.Minute }}
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </app-modal>
+  </div>
+</app-dashboard-container>
