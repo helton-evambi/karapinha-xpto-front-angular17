@@ -66,6 +66,8 @@ export class LoginComponent implements OnInit {
                 this.toastr.warning('Precisa editar os seu dados de perfíl');
                 this.route.navigate(['/administrative/edit-profile']);
               } else this.toastr.warning('A sua conta necessita de Ativação');
+            } else if (value.Status === 'blocked') {
+              this.toastr.warning('A sua conta necessita está bloqueada');
             } else {
               if (value.Role === 'user') this.route.navigate(['/']);
 
