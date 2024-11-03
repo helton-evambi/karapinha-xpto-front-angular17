@@ -109,14 +109,16 @@ export class EditProfileComponent {
   }
 
   loadUserData(): void {
-    this.userService.getUserById(16).subscribe({
-      next: (userData) => {
-        this.updateForm.patchValue(userData);
-        console.log('Form after patch:', this.updateForm.value);
-        this.cdr.detectChanges();
-      },
-      error: (err) => console.error(err),
-    });
+    this.userService
+      .getUserById(Number(sessionStorage.getItem('id')))
+      .subscribe({
+        next: (userData) => {
+          this.updateForm.patchValue(userData);
+          console.log('Form after patch:', this.updateForm.value);
+          this.cdr.detectChanges();
+        },
+        error: (err) => console.error(err),
+      });
   }
 
   onSubmit() {
