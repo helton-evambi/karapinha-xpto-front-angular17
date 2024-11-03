@@ -31,6 +31,8 @@ import {
   AuthGuard,
   AuthGuardAdministrative,
 } from './services/auth-guard.service';
+import { ManageBookingComponent } from './pages/dashboard/administrative/manage-booking/manage-booking.component';
+import { MonthlyScheduleComponent } from './pages/dashboard/administrative/monthly-schedule/monthly-schedule.component';
 
 export const routes: Routes = [
   {
@@ -134,8 +136,20 @@ export const routes: Routes = [
     data: { requiredRole: 'administrative' },
   },
   {
+    path: 'manage-booking',
+    component: ManageBookingComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
+  },
+  {
     path: 'manage-category',
     component: ManageCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { requiredRole: 'administrative' },
+  },
+  {
+    path: 'monthly-schedule',
+    component: MonthlyScheduleComponent,
     canActivate: [AuthGuard],
     data: { requiredRole: 'administrative' },
   },
