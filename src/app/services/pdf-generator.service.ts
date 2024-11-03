@@ -98,12 +98,6 @@ export class PdfGeneratorService {
         yPosition
       );
       yPosition += 8;
-      doc.text(
-        `Categoria: ${bookingService.Service.Category.Name}`,
-        margin + 10,
-        yPosition
-      );
-      yPosition += 8;
 
       if (bookingService.Professional) {
         doc.text(

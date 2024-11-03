@@ -27,7 +27,7 @@ export class ServiceService {
     return this.http.post('https://localhost:44350/api/services', formData);
   }
 
-  deleteCategory(id: number): Observable<any> {
+  deleteService(id: number): Observable<any> {
     return this.http.delete<any>(`https://localhost:44350/api/services/${id}`);
   }
 

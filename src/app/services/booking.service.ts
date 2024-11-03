@@ -6,6 +6,7 @@ import { Professional } from '../models/professional.model';
 import { BookingServices } from '../models/booking-service.model';
 import { Time } from '../models/time.model';
 import { HttpClient } from '@angular/common/http';
+import { ProfessionalService } from './professional.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class BookingService {
 
   private bookingDataSubject$ = new BehaviorSubject<Booking>(this.bookingData);
   private http = inject(HttpClient);
+  private professionalService = inject(ProfessionalService);
 
   getBookingData(): Observable<Booking> {
     return this.bookingDataSubject$.asObservable();
@@ -29,6 +31,7 @@ export class BookingService {
     this.bookingData = booking;
     this.bookingData.UserId =
       this.bookingData.User?.UserId ?? Number(sessionStorage.getItem('id'));
+    // this.bookingData.Services.map(value => value.Professional = this.professionalService.getProfessioalById(8))
     this.bookingDataSubject$.next(this.bookingData);
   }
   addService(service: Service) {
@@ -115,6 +118,11 @@ export class BookingService {
     return this.http.get<Booking>(`https://localhost:44350/api/bookings/${id}`);
   }
 
+  getBookingByUser(id: number): Observable<Booking[]> {
+    return this.http.get<Booking[]>(
+      `https://localhost:44350/api/bookings/getByUser/${id}`
+    );
+  }
   createBooking(booking: Booking): Observable<any> {
     return this.http.post('https://localhost:44350/api/bookings', booking);
   }

@@ -44,7 +44,7 @@ export class AuthService {
       if (error.status === 409) {
         errorMessage =
           error.error ||
-          'Um usuário com este nome de usuário ou e-mail já existe.';
+          'Um usuário com este username de usuário ou e-mail já existe.';
       } else {
         errorMessage = `Código do erro: ${error.status}, mensagem: ${
           error.error || error.statusText
